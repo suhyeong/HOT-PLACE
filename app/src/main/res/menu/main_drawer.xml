@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <item android:title="Menu">
+        <menu>
+            <item
+                android:id="@+id/memo"
+                android:icon="@drawable/ic_event_note_black_24dp"
+                android:title="MEMO" />
+            <item
+                android:id="@+id/friends"
+                android:icon="@drawable/ic_group_black_24dp"
+                android:title="FRIENDS" />
+            <item
+                android:id="@+id/setting"
+                android:icon="@drawable/ic_settings_black_24dp"
+                android:title="SETTING" />
+            <item
+                android:id="@+id/help"
+                android:icon="@drawable/ic_headset_mic_black_24dp"
+                android:title="HELP" />
+            <item
+                android:id="@+id/logout"
+                android:icon="@drawable/ic_exit_to_app_black_24dp"
+                android:title="LOGOUT" />
+        </menu>
+    </item>
+
+</menu>

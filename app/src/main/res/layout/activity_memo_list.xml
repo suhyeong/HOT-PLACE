@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:sl="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/user_memo_list_layout"
+    tools:context=".MemoListActivity"
+    tools:ignore="missingPrefix" >
+
+    <com.ssomai.android.scalablelayout.ScalableLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        sl:scale_base_height="1920"
+        sl:scale_base_width="1080"
+        tools:ignore="MissingConstraints">
+
+        <TextView
+            android:id="@+id/memo_list_count"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="메모가 없습니다."
+            android:layout_gravity="center_horizontal"
+            sl:scale_top="100"
+            sl:scale_width="330"
+            sl:scale_height="60"
+            sl:scale_textsize="45"/>
+        <ScrollView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:scrollbars="none"
+            android:fillViewport="true"
+            sl:scale_width="1080"
+            sl:scale_height="1770"
+            sl:scale_top="50"
+            tools:ignore="MissingConstraints">
+            <ListView
+                android:id="@+id/memo_listview"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:scrollbars="vertical"
+                android:contextClickable="true"
+                android:textDirection="firstStrongRtl"
+                sl:scale_width="1080"
+                sl:scale_height="1770"
+                sl:scale_top="50"/>
+        </ScrollView>
+    </com.ssomai.android.scalablelayout.ScalableLayout>
+
+</android.support.constraint.ConstraintLayout>

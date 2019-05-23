@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:sl="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".FriendsListClickActivity"
+    tools:ignore="missingPrefix"
+    android:scrollbars="vertical"
+    android:scrollbarStyle="insideOverlay" >
+
+    <com.ssomai.android.scalablelayout.ScalableLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        sl:scale_base_height="1920"
+        sl:scale_base_width="1080"
+        tools:ignore="MissingConstraints">
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/friend_profile_image"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@null"
+            android:layout_gravity="center_horizontal"
+            sl:scale_top="100"
+            sl:scale_width="350"
+            sl:scale_height="350" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/userinfolist_shape"
+            sl:scale_height="400"
+            sl:scale_top="600"
+            sl:scale_width="1080" />
+
+        <TextView
+            android:id="@+id/textview_friend_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="이름"
+            android:textAlignment="center"
+            sl:scale_height="65"
+            sl:scale_left="50"
+            sl:scale_textsize="50"
+            sl:scale_top="655"
+            sl:scale_width="400" />
+
+        <TextView
+            android:id="@+id/textview_friend_email"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="이메일"
+            android:textAlignment="center"
+            sl:scale_height="65"
+            sl:scale_left="50"
+            sl:scale_textsize="50"
+            sl:scale_top="770"
+            sl:scale_width="400" />
+
+        <TextView
+            android:id="@+id/textview_friend_birth"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="생년월일"
+            android:textAlignment="center"
+            sl:scale_width="400"
+            sl:scale_height="65"
+            sl:scale_top="875"
+            sl:scale_left="50"
+            sl:scale_textsize="50"/>
+
+        <TextView
+            android:id="@+id/friend_name_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=""
+            android:textColor="@color/black"
+            sl:scale_height="65"
+            sl:scale_textsize="50"
+            sl:scale_top="655"
+            sl:scale_left="520"
+            sl:scale_width="530" />
+
+        <TextView
+            android:id="@+id/friend_email_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=""
+            android:textColor="@color/black"
+            sl:scale_height="65"
+            sl:scale_textsize="50"
+            sl:scale_top="770"
+            sl:scale_left="520"
+            sl:scale_width="530" />
+
+        <TextView
+            android:id="@+id/friend_birth_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=""
+            android:textColor="@color/black"
+            sl:scale_height="65"
+            sl:scale_textsize="50"
+            sl:scale_top="875"
+            sl:scale_left="520"
+            sl:scale_width="530" />
+
+        <TextView
+            android:id="@+id/friend_memo_not_open"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="메모 비공개 계정입니다."
+            android:gravity="fill_vertical"
+            android:textAlignment="center"
+            android:background="@drawable/userinfolist_shape"
+            sl:scale_textsize="40"
+            sl:scale_width="1080"
+            sl:scale_top="1060"
+            sl:scale_height="150"/>
+
+        <TextView
+            android:id="@+id/friend_memo_count"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="메모가 없습니다."
+            android:gravity="fill_vertical"
+            android:textAlignment="center"
+            android:background="@drawable/userinfolist_shape"
+            sl:scale_textsize="40"
+            sl:scale_width="1080"
+            sl:scale_top="1060"
+            sl:scale_height="150"/>
+
+        <ScrollView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:scrollbars="none"
+            android:fillViewport="true"
+            sl:scale_width="1080"
+            sl:scale_height="500"
+            sl:scale_top="1060"
+            tools:ignore="MissingConstraints">
+
+            <ListView
+                android:id="@+id/friends_memo_listview"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:scrollbars="vertical"
+                sl:scale_width="1080"
+                sl:scale_height="600"
+                sl:scale_top="1060" />
+        </ScrollView>
+    </com.ssomai.android.scalablelayout.ScalableLayout>
+
+</android.support.constraint.ConstraintLayout>

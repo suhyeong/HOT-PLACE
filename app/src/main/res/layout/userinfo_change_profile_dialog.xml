@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:sl="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:ignore="missingPrefix" >
+
+    <com.ssomai.android.scalablelayout.ScalableLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/userprofilechangedialog_shape"
+        sl:scale_base_width="1080"
+        sl:scale_base_height="768"
+        tools:ignore="MissingConstraints">
+
+        <TextView
+            android:id="@+id/dialog_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/userprofilechangedialog_list_shape"
+            android:gravity="center"
+            android:text="프로필 사진 바꾸기"
+            android:textStyle="bold"
+            sl:scale_width="1080"
+            sl:scale_height="170"
+            sl:scale_textsize="60" />
+
+        <TextView
+            android:id="@+id/dialog_takephoto"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/userprofilechangedialog_list_shape"
+            android:gravity="center"
+            android:text="사진 찍기"
+            sl:scale_width="1080"
+            sl:scale_height="150"
+            sl:scale_textsize="55"
+            sl:scale_top="170"/>
+
+        <TextView
+            android:id="@+id/dialog_takealbum"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/userprofilechangedialog_list_shape"
+            android:gravity="center"
+            android:text="라이브러리에서 선택"
+            sl:scale_width="1080"
+            sl:scale_height="150"
+            sl:scale_textsize="55"
+            sl:scale_top="320" />
+
+        <TextView
+            android:id="@+id/dialog_resetprofile"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/userprofilechangedialog_list_shape"
+            android:gravity="center"
+            android:text="현재 사진 삭제"
+            sl:scale_width="1080"
+            sl:scale_height="150"
+            sl:scale_textsize="55"
+            sl:scale_top="470" />
+
+        <TextView
+            android:id="@+id/dialog_cancel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/userprofilechangedialog_list_shape"
+            android:gravity="center"
+            android:text="취소"
+            android:textColor="@color/mainred"
+            sl:scale_width="1080"
+            sl:scale_height="150"
+            sl:scale_textsize="55"
+            sl:scale_top="620" />
+
+    </com.ssomai.android.scalablelayout.ScalableLayout>
+</android.support.constraint.ConstraintLayout>

@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:sl="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".SignUpActivity"
+    tools:ignore="missingPrefix" >
+
+    <com.ssomai.android.scalablelayout.ScalableLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/background"
+        sl:scale_base_height="1920"
+        sl:scale_base_width="1080">
+
+        <ImageView
+            android:id="@+id/signup_page"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:src="@drawable/signuplayout_shape"
+            sl:scale_height="1150"
+            sl:scale_top="200"
+            sl:scale_width="900" />
+
+        <TextView
+            android:id="@+id/useremail"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="아이디"
+            sl:scale_width="220"
+            sl:scale_height="80"
+            sl:scale_left="200"
+            sl:scale_textsize="60"
+            sl:scale_top="300" />
+
+        <EditText
+            android:id="@+id/signupEmail"
+            android:layout_width="231dp"
+            android:layout_height="wrap_content"
+            android:focusable="true"
+            android:hint="Enter ID ex) idid@naver.com"
+            android:inputType="text"
+            android:maxLength="25"
+            style="@style/signup_EditTextStyle"
+            app:theme="@style/signup_EditTextStyle"
+            sl:scale_left="200"
+            sl:scale_textsize="47"
+            sl:scale_top="365"
+            sl:scale_width="670"
+            sl:textview_wrapcontent_direction="bottom"
+            sl:textview_wrapcontent_movesiblings="true"
+            sl:textview_wrapcontent_resizesurrounded="true" />
+
+        <TextView
+            android:id="@+id/userpassword"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="비밀번호"
+            sl:scale_height="80"
+            sl:scale_left="200"
+            sl:scale_textsize="60"
+            sl:scale_top="500"
+            sl:scale_width="250" />
+
+        <EditText
+            android:id="@+id/signupPassword"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="Enter Password"
+            android:inputType="textPassword"
+            android:maxLength="20"
+            style="@style/signup_EditTextStyle"
+            app:theme="@style/signup_EditTextStyle"
+            sl:scale_left="200"
+            sl:scale_textsize="47"
+            sl:scale_top="565"
+            sl:scale_width="670"
+            sl:textview_wrapcontent_direction="bottom"
+            sl:textview_wrapcontent_movesiblings="true"
+            sl:textview_wrapcontent_resizesurrounded="true" />
+
+        <TextView
+            android:id="@+id/username"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="이름"
+            sl:scale_height="80"
+            sl:scale_left="200"
+            sl:scale_textsize="60"
+            sl:scale_top="700"
+            sl:scale_width="220" />
+
+        <EditText
+            android:id="@+id/signupName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="Enter Name"
+            android:inputType="textPersonName"
+            android:maxLength="15"
+            style="@style/signup_EditTextStyle"
+            app:theme="@style/signup_EditTextStyle"
+            sl:scale_left="200"
+            sl:scale_textsize="47"
+            sl:scale_top="765"
+            sl:scale_width="670"
+            sl:textview_wrapcontent_direction="bottom"
+            sl:textview_wrapcontent_movesiblings="true"
+            sl:textview_wrapcontent_resizesurrounded="true" />
+
+        <TextView
+            android:id="@+id/userbirth"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="생년월일"
+            sl:scale_height="80"
+            sl:scale_left="200"
+            sl:scale_textsize="60"
+            sl:scale_top="900"
+            sl:scale_width="220" />
+
+        <EditText
+            android:id="@+id/signupBirth"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="Enter Birth ex) 20000101"
+            android:inputType="date"
+            android:maxLength="20"
+            style="@style/signup_EditTextStyle"
+            app:theme="@style/signup_EditTextStyle"
+            sl:scale_left="200"
+            sl:scale_textsize="47"
+            sl:scale_top="965"
+            sl:scale_width="670"
+            sl:textview_wrapcontent_direction="bottom"
+            sl:textview_wrapcontent_movesiblings="true"
+            sl:textview_wrapcontent_resizesurrounded="true" />
+
+        <Button
+            android:id="@+id/successButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:background="@drawable/signupbutton_shape"
+            style="?android:attr/borderlessButtonStyle"
+            android:text="SIGN UP"
+            android:textColor="@color/white"
+            sl:scale_height="150"
+            sl:scale_top="1110"
+            sl:scale_width="670"
+            sl:scale_textsize="50" />
+
+        <Button
+            android:id="@+id/backButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:background="@color/transparency"
+            android:text="BACK"
+            android:textColor="@color/white"
+            sl:scale_height="100"
+            sl:scale_textsize="50"
+            sl:scale_top="1420"
+            sl:scale_width="200" />
+
+    </com.ssomai.android.scalablelayout.ScalableLayout>
+</LinearLayout>

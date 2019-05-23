@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:sl="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".FriendsSearchFragment"
+    android:orientation="vertical"
+    tools:ignore="missingPrefix" >
+
+    <com.ssomai.android.scalablelayout.ScalableLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        sl:scale_base_width="1080"
+        sl:scale_base_height="1920">
+
+        <EditText
+            android:id="@+id/friends_search_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:focusable="true"
+            android:hint="@string/search_your_friends_for_email"
+            android:inputType="text"
+            sl:scale_height="120"
+            sl:scale_textsize="45"
+            sl:scale_top="20"
+            sl:scale_width="1000"
+            tools:ignore="MissingPrefix" />
+
+        <ImageButton
+            android:id="@+id/friends_search_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end"
+            android:layout_marginEnd="10dp"
+            android:background="@drawable/ic_search_black_24dp"
+            sl:scale_top="20" />
+
+        <TextView
+            android:id="@+id/search_result_count"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="검색결과가 없습니다."
+            android:layout_gravity="center_horizontal"
+            sl:scale_top="200"
+            sl:scale_width="400"
+            sl:scale_height="80"
+            sl:scale_textsize="45"/>
+
+        <ListView
+            android:id="@+id/friends_search_listview"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:scrollbars="vertical"
+            sl:scale_top="150"
+            sl:scale_width="1080"
+            sl:scale_height="1765"/>
+    </com.ssomai.android.scalablelayout.ScalableLayout>
+</LinearLayout>

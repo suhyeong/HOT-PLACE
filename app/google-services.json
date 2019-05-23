@@ -1,0 +1,93 @@
+{
+  "project_info": {
+    "project_number": "72499200985",
+    "firebase_url": "https://hot-place-231908.firebaseio.com",
+    "project_id": "hot-place-231908",
+    "storage_bucket": "hot-place-231908.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:72499200985:android:c247dfee99b5f143",
+        "android_client_info": {
+          "package_name": "org.androidtown.hotplace"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "72499200985-qkknr179v8g4c0fbfj4liho3mc5qdirt.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "org.androidtown.hotplace",
+            "certificate_hash": "9af39b466d5c17ddd32c21a6bd6b9aaaf11c63af"
+          }
+        },
+        {
+          "client_id": "72499200985-vjjevp1r2em56u955h8mtugq305c6l7r.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "org.androidtown.hotplace",
+            "certificate_hash": "37fe78aaf03a0372867948d32eecfb08a1f3f6d7"
+          }
+        },
+        {
+          "client_id": "72499200985-5rdsp1vda66pgkto9kjq16ngqlm1sdur.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDCTb193a8DEeciYRWk5ap-Azj8LGwCIZA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "72499200985-5rdsp1vda66pgkto9kjq16ngqlm1sdur.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:72499200985:android:676302444b23cfc5",
+        "android_client_info": {
+          "package_name": "org.androidtown.maptest"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "72499200985-ub1944a0q1s51pt1d4i0kdkjs5ovifr4.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "org.androidtown.maptest",
+            "certificate_hash": "9af39b466d5c17ddd32c21a6bd6b9aaaf11c63af"
+          }
+        },
+        {
+          "client_id": "72499200985-5rdsp1vda66pgkto9kjq16ngqlm1sdur.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDCTb193a8DEeciYRWk5ap-Azj8LGwCIZA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "72499200985-5rdsp1vda66pgkto9kjq16ngqlm1sdur.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

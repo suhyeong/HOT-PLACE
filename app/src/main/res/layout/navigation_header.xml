@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:sl="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    tools:ignore="missingPrefix" >
+
+    <com.ssomai.android.scalablelayout.ScalableLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/nav_header_layout"
+        sl:scale_base_width="1080"
+        sl:scale_base_height="450"
+        android:background="@color/maincentercolor">
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/user_profile"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/user_defaultprofile"
+            sl:scale_height="250"
+            sl:scale_top="100"
+            sl:scale_left="100"
+            sl:scale_width="250" />
+
+        <TextView
+            android:id="@+id/user_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=""
+            sl:scale_height="130"
+            sl:scale_left="405"
+            sl:scale_textsize="100"
+            sl:scale_top="115"
+            sl:scale_width="600" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="반갑습니다!"
+            sl:scale_height="100"
+            sl:scale_left="405"
+            sl:scale_textsize="80"
+            sl:scale_top="250"
+            sl:scale_width="400" />
+
+    </com.ssomai.android.scalablelayout.ScalableLayout>
+
+</LinearLayout>
