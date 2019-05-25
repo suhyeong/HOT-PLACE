@@ -1,9 +1,123 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    xmlns:sl="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".SearchActivity">
+    android:id="@+id/search_layout"
+    tools:context=".SearchActivity"
+    android:orientation="horizontal"
+    tools:ignore="MissingPrefix">
+
+    <com.ssomai.android.scalablelayout.ScalableLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        sl:scale_base_width="1080"
+        sl:scale_base_height="1920"
+        tools:ignore="MissingConstraints">
+
+        <Spinner
+            android:id="@+id/spinner"
+            android:entries="@array/광역자치단체"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="60dp"
+            sl:scale_width="450"
+            sl:scale_top="50" />
+
+        <Spinner
+            android:id="@+id/spinner2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="60dp"
+            sl:scale_width="320"
+            sl:scale_top="50"
+            sl:scale_left="450"/>
+
+        <Spinner
+            android:id="@+id/spinner3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="60dp"
+            sl:scale_width="310"
+            sl:scale_top="50"
+            sl:scale_left="770"
+            tools:ignore="MissingConstraints" />
+
+        <ImageView
+            android:id="@+id/search_weather_icon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:layout_gravity="center_horizontal"
+            android:src="@null"
+            sl:scale_height="280"
+            sl:scale_top="220"
+            sl:scale_width="500" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/search_weather_nowtemp"
+            android:gravity="center"
+            android:text=""
+            android:layout_gravity="center_horizontal"
+            sl:scale_top="468"
+            sl:scale_width="500"
+            sl:scale_height="135"
+            sl:scale_textsize="125"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/search_weather_maxtemp"
+            android:gravity="center"
+            android:text=""
+            sl:scale_top="621"
+            sl:scale_left="400"
+            sl:scale_width="100"
+            sl:scale_height="130"
+            sl:scale_textsize="60"/>
+
+        <TextView
+            android:id="@+id/search_maxmintemp_div"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="/"
+            sl:scale_left="510"
+            sl:scale_textsize="70"
+            sl:scale_top="635"
+            sl:scale_width="50" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/search_weather_mintemp"
+            android:gravity="center"
+            android:text=""
+            sl:scale_top="621"
+            sl:scale_left="560"
+            sl:scale_width="100"
+            sl:scale_height="130"
+            sl:scale_textsize="60"/>
+
+        <FrameLayout
+            android:id="@+id/traffic_map"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            sl:scale_width="900"
+            sl:scale_height="800"
+            sl:scale_top="780"/>
+    </com.ssomai.android.scalablelayout.ScalableLayout>
 
 </android.support.constraint.ConstraintLayout>

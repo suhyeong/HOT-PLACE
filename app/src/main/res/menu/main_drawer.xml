@@ -14,13 +14,13 @@
                 android:icon="@drawable/ic_group_black_24dp"
                 android:title="FRIENDS" />
             <item
+                android:id="@+id/search"
+                android:icon="@drawable/ic_search_black_24dp"
+                android:title="SEARCH" />
+            <item
                 android:id="@+id/setting"
                 android:icon="@drawable/ic_settings_black_24dp"
                 android:title="SETTING" />
-            <item
-                android:id="@+id/help"
-                android:icon="@drawable/ic_headset_mic_black_24dp"
-                android:title="HELP" />
             <item
                 android:id="@+id/logout"
                 android:icon="@drawable/ic_exit_to_app_black_24dp"

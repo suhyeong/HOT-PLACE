@@ -1,0 +1,356 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="광역자치단체">
+        <item>특별시, 광역시, 도</item>
+        <item>서울특별시</item>
+        <item>부산광역시</item>
+        <item>광주광역시</item>
+        <item>대구광역시</item>
+        <item>대전광역시</item>
+        <item>울산광역시</item>
+        <item>인천광역시</item>
+        <item>제주특별자치도</item>
+        <item>경기도</item>
+        <item>강원도</item>
+        <item>충청남도</item>
+        <item>충청북도</item>
+        <item>전라남도</item>
+        <item>전라북도</item>
+        <item>경상남도</item>
+        <item>경상북도</item>
+    </string-array>
+
+    <string-array name="서울특별시">
+        <item>시, 군, 구</item>
+        <item>강서구</item>
+    </string-array>
+    <string-array name="강서구"></string-array>
+
+    <string-array name="부산광역시">
+        <item>시, 군, 구</item>
+        <item>기장군</item>
+    </string-array>
+    <string-array name="기장군"></string-array>
+
+    <string-array name="광주광역시">
+        <item>시, 군, 구</item>
+        <item>광산구</item>
+    </string-array>
+    <string-array name="광산구"></string-array>
+
+    <string-array name="대구광역시">
+        <item>시, 군, 구</item>
+        <item>달서구</item>
+    </string-array>
+    <string-array name="달서구"></string-array>
+
+    <string-array name="대전광역시">
+        <item>시, 군, 구</item>
+        <item>서구</item>
+    </string-array>
+    <string-array name="서구"></string-array>
+
+    <string-array name="울산광역시">
+        <item>시, 군, 구</item>
+        <item>울주군</item>
+    </string-array>
+    <string-array name="울주군"></string-array>
+
+    <string-array name="인천광역시">
+        <item>시, 군, 구</item>
+        <item>강화군</item>
+    </string-array>
+    <string-array name="강화군"></string-array>
+
+    <string-array name="제주특별자치도">
+        <item>시, 군, 구</item>
+        <item>제주시</item>
+    </string-array>
+
+    <string-array name="제주시">
+        <item>읍, 면, 리</item>
+        <item>애월읍</item>
+    </string-array>
+
+    <string-array name="경기도">
+        <item>시, 군, 구</item>
+        <item>광주시</item>
+        <item>연천군</item>
+        <item>여주군</item>
+        <item>양평군</item>
+        <item>양주시</item>
+        <item>의정부시</item>
+        <item>수원시</item>
+        <item>부천시</item>
+        <item>오산시</item>
+        <item>파주시</item>
+        <item>구리시</item>
+        <item>고양시</item>
+        <item>가평군</item>
+        <item>이천시</item>
+        <item>화성시</item>
+        <item>포천시</item>
+        <item>안양시</item>
+        <item>안성시</item>
+        <item>안산시</item>
+        <item>성남시</item>
+        <item>하남시</item>
+        <item>남양주시</item>
+        <item>광명시</item>
+    </string-array>
+    <string-array name="연천군"></string-array>
+    <string-array name="여주군"></string-array>
+    <string-array name="양평군"></string-array>
+    <string-array name="양주시"></string-array>
+    <string-array name="의정부시"></string-array>
+    <string-array name="수원시"></string-array>
+    <string-array name="부천시"></string-array>
+    <string-array name="오산시"></string-array>
+    <string-array name="구리시"></string-array>
+    <string-array name="고양시"></string-array>
+    <string-array name="가평군"></string-array>
+    <string-array name="화성시"></string-array>
+    <string-array name="안양시"></string-array>
+    <string-array name="안성시"></string-array>
+    <string-array name="안산시"></string-array>
+    <string-array name="성남시"></string-array>
+    <string-array name="하남시"></string-array>
+    <string-array name="광명시"></string-array>
+    <string-array name="파주시">
+        <item>읍, 면, 리</item>
+        <item>문산읍</item>
+    </string-array>
+    <string-array name="포천시">
+        <item>읍, 면, 리</item>
+        <item>창수면</item>
+    </string-array>
+    <string-array name="이천시">
+        <item>읍, 면, 리</item>
+        <item>부발읍</item>
+    </string-array>
+    <string-array name="남양주시">
+        <item>읍, 면, 리</item>
+        <item>화도읍</item>
+        <item>와부읍</item>
+    </string-array>
+    <string-array name="광주시">
+        <item>읍, 면, 리</item>
+        <item>이선리</item>
+    </string-array>
+
+    <string-array name="강원도">
+        <item>시, 군, 구</item>
+        <item>영월군</item>
+        <item>양구군</item>
+        <item>원주시</item>
+        <item>태백시</item>
+        <item>속초시</item>
+        <item>삼척시</item>
+        <item>강릉시</item>
+        <item>화천군</item>
+        <item>홍천군</item>
+        <item>춘천시</item>
+        <item>동해시</item>
+    </string-array>
+    <string-array name="영월군"></string-array>
+    <string-array name="양구군"></string-array>
+    <string-array name="원주시"></string-array>
+    <string-array name="태백시"></string-array>
+    <string-array name="속초시"></string-array>
+    <string-array name="삼척시"></string-array>
+    <string-array name="강릉시"></string-array>
+    <string-array name="화천군"></string-array>
+    <string-array name="홍천군"></string-array>
+    <string-array name="춘천시"></string-array>
+    <string-array name="동해시"></string-array>
+
+    <string-array name="충청남도">
+        <item>시, 군, 구</item>
+        <item>예산군</item>
+        <item>당진군</item>
+        <item>공주시</item>
+        <item>보령시</item>
+        <item>서산시</item>
+        <item>금산군</item>
+        <item>부여군</item>
+        <item>아산시</item>
+        <item>논산시</item>
+        <item>서천군</item>
+        <item>홍성군</item>
+    </string-array>
+    <string-array name="예산군"></string-array>
+    <string-array name="당진군"></string-array>
+    <string-array name="보령시"></string-array>
+    <string-array name="서산시"></string-array>
+    <string-array name="부여군"></string-array>
+    <string-array name="홍성군"></string-array>
+    <string-array name="공주시">
+        <item>읍, 면, 리</item>
+        <item>태산리</item>
+    </string-array>
+    <string-array name="금산군">
+        <item>읍, 면, 리</item>
+        <item>진산면</item>
+    </string-array>
+    <string-array name="서천군">
+        <item>읍, 면, 리</item>
+        <item>기산면</item>
+    </string-array>
+    <string-array name="아산시">
+        <item>읍, 면, 리</item>
+        <item>배방읍</item>
+    </string-array>
+    <string-array name="논산시">
+        <item>읍, 면, 리</item>
+        <item>연무읍</item>
+    </string-array>
+
+    <string-array name="충청북도">
+        <item>시, 군, 구</item>
+        <item>영동군</item>
+        <item>옥천군</item>
+        <item>괴산군</item>
+        <item>청주시</item>
+        <item>진천군</item>
+    </string-array>
+    <string-array name="영동군"></string-array>
+    <string-array name="옥천군"></string-array>
+    <string-array name="괴산군"></string-array>
+    <string-array name="청주시"></string-array>
+    <string-array name="진천군"></string-array>
+
+    <string-array name="전라남도">
+        <item>시, 군, 구</item>
+        <item>여수시</item>
+        <item>영광군</item>
+        <item>순천시</item>
+        <item>보성군</item>
+        <item>나주시</item>
+        <item>목포시</item>
+        <item>광양시</item>
+        <item>구례군</item>
+        <item>화순군</item>
+        <item>해남군</item>
+        <item>신안군</item>
+        <item>곡성군</item>
+        <item>해남군</item>
+    </string-array>
+
+    <string-array name="여수시"></string-array>
+    <string-array name="영광군"></string-array>
+    <string-array name="순천시"></string-array>
+    <string-array name="나주시"></string-array>
+    <string-array name="목포시"></string-array>
+    <string-array name="광양시"></string-array>
+    <string-array name="구례군"></string-array>
+    <string-array name="화순군"></string-array>
+    <string-array name="신안군"></string-array>
+    <string-array name="보성군">
+        <item>읍, 면, 리</item>
+        <item>벌교읍</item>
+    </string-array>
+    <string-array name="해남군">
+        <item>읍, 면, 리</item>
+        <item>화원면</item>
+    </string-array>
+    <string-array name="곡성군">
+        <item>읍, 면, 리</item>
+        <item>호곡리</item>
+    </string-array>
+
+    <string-array name="전라북도">
+        <item>시, 군, 구</item>
+        <item>완주군</item>
+        <item>부안군</item>
+        <item>남원시</item>
+        <item>군산시</item>
+        <item>고창군</item>
+        <item>김제시</item>
+        <item>익산시</item>
+        <item>임실군</item>
+        <item>전주시</item>
+        <item>진안군</item>
+    </string-array>
+    <string-array name="완주군"></string-array>
+    <string-array name="부안군"></string-array>
+    <string-array name="남원시"></string-array>
+    <string-array name="군산시"></string-array>
+    <string-array name="고창군"></string-array>
+    <string-array name="김제시"></string-array>
+    <string-array name="익산시"></string-array>
+    <string-array name="임실군"></string-array>
+    <string-array name="전주시"></string-array>
+    <string-array name="진안군"></string-array>
+
+    <string-array name="경상남도">
+        <item>시, 군, 구</item>
+        <item>양산시</item>
+        <item>밀양시</item>
+        <item>마산시</item>
+        <item>고성군</item>
+        <item>거제시</item>
+        <item>김해시</item>
+        <item>진주시</item>
+        <item>진해시</item>
+        <item>창원시</item>
+        <item>창녕군</item>
+    </string-array>
+
+    <string-array name="밀양시"></string-array>
+    <string-array name="마산시"></string-array>
+    <string-array name="고성군"></string-array>
+    <string-array name="김해시"></string-array>
+    <string-array name="진주시"></string-array>
+    <string-array name="진해시"></string-array>
+    <string-array name="창녕군"></string-array>
+    <string-array name="거제시">
+        <item>읍, 면, 리</item>
+        <item>신현읍</item>
+    </string-array>
+    <string-array name="양산시">
+        <item>읍, 면, 리</item>
+        <item>웅상읍</item>
+    </string-array>
+    <string-array name="창원시">
+        <item>읍, 면, 리</item>
+        <item>내서읍</item>
+    </string-array>
+
+    <string-array name="경상북도">
+        <item>시, 군, 구</item>
+        <item>포항시</item>
+        <item>칠곡군</item>
+        <item>상주시</item>
+        <item>문경시</item>
+        <item>경주시</item>
+        <item>군위군</item>
+        <item>구미시</item>
+        <item>김천시</item>
+        <item>경산시</item>
+        <item>청송군</item>
+        <item>안동시</item>
+    </string-array>
+
+    <string-array name="상주시"></string-array>
+    <string-array name="문경시"></string-array>
+    <string-array name="경주시"></string-array>
+    <string-array name="군위군"></string-array>
+    <string-array name="구미시"></string-array>
+    <string-array name="김천시"></string-array>
+    <string-array name="청송군"></string-array>
+    <string-array name="안동시"></string-array>
+    <string-array name="포항시">
+        <item>읍, 면, 리</item>
+        <item>흥해읍</item>
+        <item>연일읍</item>
+    </string-array>
+    <string-array name="칠곡군">
+        <item>읍, 면, 리</item>
+        <item>왜관읍</item>
+    </string-array>
+    <string-array name="경산시">
+        <item>읍, 면, 리</item>
+        <item>하양읍</item>
+    </string-array>
+
+</resources>

@@ -232,13 +232,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
 
-        //교통 정보 제공 네이버 지도 생성
-        trafficmapFragment = new TrafficMapFragment();
-        fragmentManager = getSupportFragmentManager();
-        fragmentTransaction = fragmentManager.beginTransaction();
-        fragmentTransaction.replace(R.id.traffic_map, trafficmapFragment);
-        fragmentTransaction.commit();
-
     }
 
     //액션바 메뉴
@@ -251,10 +244,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
-            case R.id.action_search:
-                //search icon selected : click event for action_search item
-                Intent intent = new Intent(this, SearchActivity.class);
-                startActivity(intent);
+            case R.id.share:
+                //share icon selected : click event for share item
+                Toast.makeText(this, "share", Toast.LENGTH_SHORT).show();
                 return true;
             default:
                 //do nothing
@@ -275,8 +267,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             case R.id.setting:
                 openSettings();
                 break;
-            case R.id.help:
-                Toast.makeText(this, "Help", Toast.LENGTH_SHORT).show();
+            case R.id.search:
+                openSearch();
                 break;
             case R.id.logout:
                 AlertDialog.Builder logout_builder = new AlertDialog.Builder(this);
@@ -340,6 +332,12 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     //설정 화면 띄우기
     public void openSettings() {
         Intent intent = new Intent(this, SettingsActivity.class);
+        startActivity(intent);
+    }
+
+    //검색 화면 띄우기
+    public void openSearch() {
+        Intent intent = new Intent(this, SearchActivity.class);
         startActivity(intent);
     }
 
@@ -446,6 +444,18 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
             //날씨 구하기
             find_weather(mLatitude, mLongitude);
+
+            //교통 정보 제공 네이버 지도 생성
+            trafficmapFragment = new TrafficMapFragment();
+            fragmentManager = getSupportFragmentManager();
+            fragmentTransaction = fragmentManager.beginTransaction();
+            Bundle bundle = new Bundle();
+            bundle.putDouble("user_Latitude", mLatitude);
+            bundle.putDouble("user_Longitude", mLongitude);
+            trafficmapFragment.setArguments(bundle);
+            fragmentTransaction.replace(R.id.traffic_map, trafficmapFragment);
+            fragmentTransaction.commit();
+
         }
 
         @Override
