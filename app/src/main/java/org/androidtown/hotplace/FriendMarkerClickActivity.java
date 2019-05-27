@@ -22,18 +22,29 @@ import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 
-public class FriendMemoListClickActivity extends AppCompatActivity {
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
-    ImageView memo_photo_imageview;
-    TextView memo_date_textview, memo_location_textview, memo_contents_textview;
+public class FriendMarkerClickActivity extends AppCompatActivity {
 
-    private String memo_info;
+    ImageView friend_memo_photo_imageview;
+    TextView friend_memo_date_textview, friend_memo_location_textview, friend_memo_contents_textview;
+
+    private String put_friend_marker_title;
+    private String put_friend_uid;
+
+    private String friend_memo_date_hh;
+    private String friend_memo_date_mm;
+
     private int memo_photo_exist_int;
     private String memo_date;
     private String memo_contents;
     private String memo_date_for_save;
-    private String put_friend_uid;
     private String memo_location;
+
+    long mNow;
+    Date mDate;
+    SimpleDateFormat nFormat = new SimpleDateFormat("yyyyMMdd");
 
     final FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
     FirebaseDatabase database = FirebaseDatabase.getInstance();
@@ -45,25 +56,27 @@ public class FriendMemoListClickActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_friend_memo_list_click);
+        setContentView(R.layout.activity_friend_marker_click);
 
         //액션바
         getSupportActionBar().setDisplayShowTitleEnabled(false); //액션바 어플리케이션 이름 삭제
         getSupportActionBar().setDisplayHomeAsUpEnabled(true); //뒤로가기 버튼
 
-        memo_photo_imageview = (ImageView) findViewById(R.id.friend_memo_photo_imageview);
-        memo_photo_imageview.setVisibility(View.GONE);
-        memo_date_textview = (TextView) findViewById(R.id.friend_memo_date_textview);
-        memo_contents_textview = (TextView) findViewById(R.id.friend_memo_contents_textview);
-        memo_location_textview = (TextView) findViewById(R.id.friend_memo_location);
+        friend_memo_photo_imageview = (ImageView) findViewById(R.id.friend_marker_memo_photo_imageview);
+        friend_memo_photo_imageview.setVisibility(View.GONE);
+        friend_memo_date_textview = (TextView) findViewById(R.id.friend_marker_memo_date_textview);
+        friend_memo_contents_textview = (TextView) findViewById(R.id.friend_marker_memo_contents_textview);
+        friend_memo_location_textview = (TextView) findViewById(R.id.friend_marker_memo_location_textview);
 
         Intent intent = getIntent();
-        put_friend_uid = intent.getStringExtra("friend_uid");
-        memo_date_for_save = intent.getStringExtra("friend_memo_date");
-
+        put_friend_uid = intent.getStringExtra("marker friend uid");
+        put_friend_marker_title = intent.getStringExtra("friend marker title");
+        friend_memo_date_hh = put_friend_marker_title.substring(put_friend_marker_title.indexOf("서")+2, put_friend_marker_title.indexOf("시"));
+        friend_memo_date_mm = put_friend_marker_title.substring(put_friend_marker_title.indexOf("시")+1, put_friend_marker_title.indexOf("분"));
+        memo_date_for_save = TodayDate().concat("_").concat(friend_memo_date_hh).concat(friend_memo_date_mm);
         memo_date = memo_date_for_save.substring(0,4)+"."+memo_date_for_save.substring(4,6)+"."+memo_date_for_save.substring(6,8)+" "
                 +memo_date_for_save.substring(9,11)+":"+memo_date_for_save.substring(11,13);
-        memo_date_textview.setText(memo_date);
+        friend_memo_date_textview.setText(memo_date);
 
         database.getInstance().getReference("Memo").child(put_friend_uid).child(memo_date_for_save).addValueEventListener(new ValueEventListener() {
             @Override
@@ -72,11 +85,11 @@ public class FriendMemoListClickActivity extends AppCompatActivity {
                 memo_photo_exist_int = get.photo_exist;
                 memo_contents = get.contents;
                 memo_location = get.location;
-                memo_contents_textview.setText(memo_contents);
-                memo_location_textview.setText(memo_location);
+                friend_memo_contents_textview.setText(memo_contents);
+                friend_memo_location_textview.setText(memo_location);
 
                 if(memo_photo_exist_int == 1) {
-                    memo_photo_imageview.setVisibility(View.VISIBLE);
+                    friend_memo_photo_imageview.setVisibility(View.VISIBLE);
                     pathReference = storageReference.child(put_friend_uid + "/Memo_photo/" + memo_date_for_save);
                     pathReference.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
                         @Override
@@ -84,7 +97,7 @@ public class FriendMemoListClickActivity extends AppCompatActivity {
                             String imageurl = uri.toString();
                             Glide.with(getApplicationContext())
                                     .load(imageurl)
-                                    .into(memo_photo_imageview);
+                                    .into(friend_memo_photo_imageview);
                         }
                     }).addOnFailureListener(new OnFailureListener() {
                         @Override
@@ -97,7 +110,7 @@ public class FriendMemoListClickActivity extends AppCompatActivity {
 
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
-                databaseError.getMessage();
+
             }
         });
     }
@@ -113,5 +126,12 @@ public class FriendMemoListClickActivity extends AppCompatActivity {
             }
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    //오늘 날짜 불러오기 (현재)
+    private String TodayDate() {
+        mNow = System.currentTimeMillis();
+        mDate = new Date(mNow);
+        return nFormat.format(mDate);
     }
 }

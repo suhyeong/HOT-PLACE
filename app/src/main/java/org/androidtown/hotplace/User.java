@@ -17,7 +17,6 @@ public class User {
 
     public User() {
         // Default constructor required for calls to DataSnapshot.getValue(User.class)
-
     }
 
     public User(String userEmail, String userName, String userBirth, int userProfile, int userMemoOpenRange, boolean userLocationOpenRange) {
@@ -41,5 +40,4 @@ public class User {
 
         return result;
     }
-
 }

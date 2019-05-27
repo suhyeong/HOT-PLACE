@@ -38,6 +38,7 @@ public class SearchActivity extends AppCompatActivity {
     FragmentManager fragmentManager;
     FragmentTransaction fragmentTransaction;
     SearchTrafficMapFragment searchTrafficMapFragment;
+    Bundle bundle;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,6 +59,7 @@ public class SearchActivity extends AppCompatActivity {
         searchTrafficMapFragment = new SearchTrafficMapFragment();
         fragmentManager = getSupportFragmentManager();
         fragmentTransaction = fragmentManager.beginTransaction();
+        bundle = new Bundle();
 
         final Spinner spinner = (Spinner) findViewById(R.id.spinner);
         spinner.setSelection(0);
@@ -92,7 +94,6 @@ public class SearchActivity extends AppCompatActivity {
                                 find_weather("Seoul");
                                 temp_div.setVisibility(View.VISIBLE);
 
-                                Bundle bundle = new Bundle();
                                 bundle.putDouble("search_Latitude", 37.560067);
                                 bundle.putDouble("search_Longitude", 126.822551);
                                 searchTrafficMapFragment.setArguments(bundle);
@@ -136,7 +137,6 @@ public class SearchActivity extends AppCompatActivity {
                                 find_weather("Kijang");
                                 temp_div.setVisibility(View.VISIBLE);
 
-                                Bundle bundle = new Bundle();
                                 bundle.putDouble("search_Latitude", 35.263681);
                                 bundle.putDouble("search_Longitude", 129.224700);
                                 searchTrafficMapFragment.setArguments(bundle);

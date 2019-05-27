@@ -21,7 +21,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MemoListClickActivity"></activity>
+        <activity android:name=".FriendMarkerClickActivity"></activity>
+        <activity android:name=".MemoListClickActivity" />
         <activity android:name=".FriendRequestListClickActivity" />
         <activity android:name=".SearchFriendMemoListClickActivity" />
         <activity android:name=".FriendsSearchClickActivity" />

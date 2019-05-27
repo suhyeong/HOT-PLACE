@@ -12,6 +12,7 @@ import android.location.LocationListener;
 import android.location.LocationManager;
 import android.net.Uri;
 import android.os.Build;
+import android.os.Parcel;
 import android.provider.Settings;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
@@ -21,7 +22,6 @@ import android.support.v4.app.FragmentTransaction;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
-import android.support.v7.app.ActionBar;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -42,6 +42,7 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 import com.bumptech.glide.Glide;
+import com.google.android.gms.maps.CameraUpdate;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
@@ -67,12 +68,14 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
-public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener, OnMapReadyCallback, GoogleMap.OnMarkerClickListener {
+public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener, OnMapReadyCallback, GoogleMap.OnMarkerClickListener, GoogleMap.OnInfoWindowClickListener {
 
     private BackPressCloseHandler backPressCloseHandler;
     private DrawerLayout drawer;
@@ -109,6 +112,20 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     FirebaseStorage storage = FirebaseStorage.getInstance("gs://hot-place-231908.appspot.com/");
     StorageReference storageReference = storage.getReference();
     StorageReference pathReference;
+
+    String username_for_marker;
+    String friend_maker_title;
+
+    private String memo_date_for_save;
+    private String memo_date_yyyymmdd;
+    private String memo_date_hh;
+    private String memo_date_mm;
+    private double memo_latitude;
+    private double memo_longitude;
+
+    long mNow;
+    Date mDate;
+    SimpleDateFormat nFormat = new SimpleDateFormat("yyyyMMdd");
 
     @SuppressLint("RestrictedApi")
     @Override
@@ -204,19 +221,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
-
-            }
-        });
-
-        database.getInstance().getReference("Friends_info").child(user.getUid()).addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                //if(dataSnapshot.getChildrenCount() > 0)
-                    //friends_marker();
-            }
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-
+                databaseError.getMessage();
             }
         });
 
@@ -348,54 +353,141 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         //지도 타입 - 일반
         googleMap.setMapType(GoogleMap.MAP_TYPE_NORMAL);
+        googleMap.getUiSettings().setZoomControlsEnabled(true);
 
         // 나의 위치 설정
         final LatLng position = new LatLng(mLatitude, mLongitude);
 
         //화면 중앙의 위치와 카메라 줌비율
         mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(position, 15));
+        mMap.setOnMarkerClickListener(this);
+        mMap.setOnInfoWindowClickListener(this);
 
         database.getInstance().getReference("user_info").child(user.getUid()).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 User get = dataSnapshot.getValue(User.class);
-                String username_for_marker = get.userName + "님";
+                username_for_marker = get.userName + "님";
                 Marker marker = mMap.addMarker(new MarkerOptions()
                         .position(position)
                         .title(username_for_marker)
-                        .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_ROSE)));
+                        .snippet("메모를 추가하시려면 클릭하세요 !")
+                        .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_ORANGE)));
                 marker.showInfoWindow();
             }
 
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
-
+                databaseError.getMessage();
             }
         });
-        mMap.setOnMarkerClickListener(this);
+
+        database.getInstance().getReference("Friends_info").child(user.getUid()).addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                if(dataSnapshot.getChildrenCount() > 0) {
+                    for(DataSnapshot friendSnapshot : dataSnapshot.getChildren()) {
+                        final String friend_uid = friendSnapshot.getValue().toString();
+                        database.getInstance().getReference("Memo").child(friend_uid).addValueEventListener(new ValueEventListener() {
+                            @Override
+                            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                                if(dataSnapshot.getChildrenCount() > 0) {
+                                    for(DataSnapshot friend_memo_Snapshot : dataSnapshot.getChildren()) {
+                                        Memo_ memo = friend_memo_Snapshot.getValue(Memo_.class);
+                                        memo_date_for_save = memo.date;
+                                        memo_date_yyyymmdd = memo_date_for_save.substring(0,8);
+                                        memo_date_hh = memo_date_for_save.substring(9,11);
+                                        memo_date_mm = memo_date_for_save.substring(11,13);
+                                        memo_latitude = memo.location_Latitude;
+                                        memo_longitude = memo.location_Longitude;
+                                        final LatLng friend_position = new LatLng(memo_latitude, memo_longitude);
+                                        if(TodayDate().equals(memo_date_yyyymmdd)) { //오늘 올라온 메모만 표시
+                                            database.getInstance().getReference("user_info").child(friend_uid).addValueEventListener(new ValueEventListener() {
+                                                @Override
+                                                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                                                    User friend_get = dataSnapshot.getValue(User.class);
+                                                    User_UID friend_uid_class = new User_UID();
+                                                    friend_uid_class.userUID = friend_uid;
+                                                    friend_maker_title = friend_get.userName + "님께서 " + memo_date_hh + "시" + memo_date_mm + "분에 메모를 올렸습니다!";
+                                                    Marker marker = mMap.addMarker(new MarkerOptions()
+                                                            .position(friend_position)
+                                                            .title(friend_maker_title));
+                                                    marker.setTag(friend_uid_class.userUID);
+                                                }
+
+                                                @Override
+                                                public void onCancelled(@NonNull DatabaseError databaseError) {
+                                                    databaseError.getMessage();
+                                                }
+                                            });
+                                        }
+                                    }
+                                }
+                            }
+
+                            @Override
+                            public void onCancelled(@NonNull DatabaseError databaseError) {
+                                databaseError.getMessage();
+                            }
+                        });
+                    }
+                }
+            }
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+                databaseError.getMessage();
+            }
+        });
+    }
+
+    //오늘 날짜 불러오기 (현재)
+    private String TodayDate() {
+        mNow = System.currentTimeMillis();
+        mDate = new Date(mNow);
+        return nFormat.format(mDate);
     }
 
     //구글맵 마커 클릭시
     @Override
     public boolean onMarkerClick(Marker marker) {
-        AlertDialog.Builder CreateMemo_builder = new AlertDialog.Builder(this);
-        CreateMemo_builder.setMessage("현재 위치에 메모를 추가하시겠습니까?").setCancelable(false)
-                .setPositiveButton("네", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        //메모생성 '네' 클릭시
-                        openMemo();
-                    }
-                }).setNegativeButton("아니요", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                //메모생성 '아니요' 클릭시
-                dialog.dismiss();
-            }
-        });
-        AlertDialog alert = CreateMemo_builder.create();
-        alert.show();
+        marker.showInfoWindow();
+        CameraUpdate center = CameraUpdateFactory.newLatLng(marker.getPosition());
+        mMap.animateCamera(center);
         return true;
+    }
+
+    //구글맵 정보창 클릭시
+    @Override
+    public void onInfoWindowClick(Marker marker) {
+        if(marker.getTitle().equals(username_for_marker)) {
+            AlertDialog.Builder CreateMemo_builder = new AlertDialog.Builder(this);
+            CreateMemo_builder.setMessage("현재 위치에 메모를 추가하시겠습니까?").setCancelable(false)
+                    .setPositiveButton("네", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            //메모생성 '네' 클릭시
+                            openMemo();
+                        }
+                    }).setNegativeButton("아니요", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    //메모생성 '아니요' 클릭시
+                    dialog.dismiss();
+                }
+            });
+            AlertDialog alert = CreateMemo_builder.create();
+            alert.show();
+        } else {
+            friend_marker_memo(marker.getTag().toString(), marker.getTitle());
+        }
+    }
+
+    //친구 마커 클릭 후 친구 메모 띄우기
+    public void friend_marker_memo(String marker_friend_uid, String marker_title) {
+        Intent intent = new Intent(MainActivity.this, FriendMarkerClickActivity.class);
+        intent.putExtra("marker friend uid", marker_friend_uid);
+        intent.putExtra("friend marker title", marker_title);
+        startActivity(intent);
     }
 
     //메모 작성 화면 띄우기
