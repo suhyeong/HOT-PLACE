@@ -6,7 +6,7 @@
     xmlns:sl="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MemoListClickActivity"
+    tools:context=".RequestFriendMemoClickActivity"
     tools:ignore="missingPrefix" >
 
     <com.ssomai.android.scalablelayout.ScalableLayout
@@ -17,7 +17,7 @@
         tools:ignore="MissingConstraints">
 
         <TextView
-            android:id="@+id/memo_date_textview"
+            android:id="@+id/request_friend_memo_date_textview"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
@@ -29,8 +29,8 @@
             sl:scale_textsize="55"
             sl:scale_height="80"/>
 
-        <EditText
-            android:id="@+id/memo_contents_edittext"
+        <TextView
+            android:id="@+id/request_friend_memo_contents_textview"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@drawable/memo_contents_shape"
@@ -46,7 +46,7 @@
             sl:scale_width="1080" />
 
         <TextView
-            android:id="@+id/memo_location_textview"
+            android:id="@+id/request_friend_memo_location_textview"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@null"
@@ -58,7 +58,7 @@
             sl:scale_left="50"/>
 
         <ImageView
-            android:id="@+id/memo_photo_imageview"
+            android:id="@+id/request_friend_memo_photo_imageview"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"

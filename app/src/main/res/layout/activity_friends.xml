@@ -27,7 +27,7 @@
             android:text="목록"
             sl:scale_width="360"
             sl:scale_height="130"
-            sl:scale_top="50"
+            sl:scale_top="20"
             sl:scale_textsize="50" />
 
         <Button
@@ -39,7 +39,7 @@
             sl:scale_left="360"
             sl:scale_width="360"
             sl:scale_height="130"
-            sl:scale_top="50"
+            sl:scale_top="20"
             sl:scale_textsize="50"/>
 
         <Button
@@ -50,7 +50,7 @@
             sl:scale_left="720"
             sl:scale_width="360"
             sl:scale_height="130"
-            sl:scale_top="50"
+            sl:scale_top="20"
             sl:scale_textsize="50"/>
 
         <FrameLayout
@@ -59,8 +59,8 @@
             android:layout_height="wrap_content"
             android:background="@color/transparency"
             sl:scale_width="1080"
-            sl:scale_height="1700"
-            sl:scale_top="200">
+            sl:scale_height="1730"
+            sl:scale_top="170">
 
         </FrameLayout>
     </com.ssomai.android.scalablelayout.ScalableLayout>

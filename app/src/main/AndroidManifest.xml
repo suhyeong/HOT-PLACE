@@ -16,12 +16,13 @@
 
     <application
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@mipmap/ic_launcher_new"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
+        android:roundIcon="@mipmap/ic_launcher_new_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".FriendMarkerClickActivity"></activity>
+        <activity android:name=".RequestFriendMemoClickActivity"></activity>
+        <activity android:name=".FriendMarkerClickActivity" />
         <activity android:name=".MemoListClickActivity" />
         <activity android:name=".FriendRequestListClickActivity" />
         <activity android:name=".SearchFriendMemoListClickActivity" />

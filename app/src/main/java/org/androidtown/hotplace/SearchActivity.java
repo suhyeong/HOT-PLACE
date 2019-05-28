@@ -56,11 +56,6 @@ public class SearchActivity extends AppCompatActivity {
         temp_div = (TextView) findViewById(R.id.search_maxmintemp_div);
         temp_div.setVisibility(View.INVISIBLE);
 
-        searchTrafficMapFragment = new SearchTrafficMapFragment();
-        fragmentManager = getSupportFragmentManager();
-        fragmentTransaction = fragmentManager.beginTransaction();
-        bundle = new Bundle();
-
         final Spinner spinner = (Spinner) findViewById(R.id.spinner);
         spinner.setSelection(0);
         final Spinner spinner2 = (Spinner) findViewById(R.id.spinner2);
@@ -76,6 +71,12 @@ public class SearchActivity extends AppCompatActivity {
         spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                searchTrafficMapFragment = new SearchTrafficMapFragment();
+                fragmentManager = getSupportFragmentManager();
+                fragmentTransaction = fragmentManager.beginTransaction();
+                bundle = new Bundle();
+                //fragmentTransaction.commit();
+
                 if (adspin1.getItem(position).equals("서울특별시")) {
                     choice_do = "서울특별시";
                     adspin2 = ArrayAdapter.createFromResource(SearchActivity.this, R.array.서울특별시, android.R.layout.simple_spinner_dropdown_item);
@@ -119,7 +120,8 @@ public class SearchActivity extends AppCompatActivity {
 
                         }
                     });
-                } else if (adspin1.getItem(position).equals("부산광역시")) {
+                }
+                else if (adspin1.getItem(position).equals("부산광역시")) {
                     choice_do = "부산광역시";
                     adspin2 = ArrayAdapter.createFromResource(SearchActivity.this, R.array.부산광역시, android.R.layout.simple_spinner_dropdown_item);
                     adspin2.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -162,7 +164,8 @@ public class SearchActivity extends AppCompatActivity {
 
                         }
                     });
-                } else if (adspin1.getItem(position).equals("광주광역시")) {
+                }
+                else if (adspin1.getItem(position).equals("광주광역시")) {
                     choice_do = "광주광역시";
                     adspin2 = ArrayAdapter.createFromResource(SearchActivity.this, R.array.광주광역시, android.R.layout.simple_spinner_dropdown_item);
                     adspin2.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -179,6 +182,12 @@ public class SearchActivity extends AppCompatActivity {
 
                                 find_weather("Gwangju");
                                 temp_div.setVisibility(View.VISIBLE);
+
+                                bundle.putDouble("search_Latitude", 35.135154);
+                                bundle.putDouble("search_Longitude", 126.788463);
+                                searchTrafficMapFragment.setArguments(bundle);
+                                fragmentTransaction.replace(R.id.traffic_map, searchTrafficMapFragment);
+
                                 spinner3.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                                     @Override
                                     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
@@ -198,7 +207,8 @@ public class SearchActivity extends AppCompatActivity {
 
                         }
                     });
-                } else if (adspin1.getItem(position).equals("대구광역시")) {
+                }
+                else if (adspin1.getItem(position).equals("대구광역시")) {
                     choice_do = "대구광역시";
                     adspin2 = ArrayAdapter.createFromResource(SearchActivity.this, R.array.대구광역시, android.R.layout.simple_spinner_dropdown_item);
                     adspin2.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -215,6 +225,12 @@ public class SearchActivity extends AppCompatActivity {
 
                                 find_weather("Daegu");
                                 temp_div.setVisibility(View.VISIBLE);
+
+                                bundle.putDouble("search_Latitude", 35.829183);
+                                bundle.putDouble("search_Longitude", 128.529102);
+                                searchTrafficMapFragment.setArguments(bundle);
+                                fragmentTransaction.replace(R.id.traffic_map, searchTrafficMapFragment);
+
                                 spinner3.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                                     @Override
                                     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
@@ -234,7 +250,8 @@ public class SearchActivity extends AppCompatActivity {
 
                         }
                     });
-                } else if (adspin1.getItem(position).equals("대전광역시")) {
+                }
+                else if (adspin1.getItem(position).equals("대전광역시")) {
                     choice_do = "대전광역시";
                     adspin2 = ArrayAdapter.createFromResource(SearchActivity.this, R.array.대전광역시, android.R.layout.simple_spinner_dropdown_item);
                     adspin2.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -251,6 +268,12 @@ public class SearchActivity extends AppCompatActivity {
 
                                 find_weather("Daejeon");
                                 temp_div.setVisibility(View.VISIBLE);
+
+                                bundle.putDouble("search_Latitude", 36.340588);
+                                bundle.putDouble("search_Longitude", 127.380601);
+                                searchTrafficMapFragment.setArguments(bundle);
+                                fragmentTransaction.replace(R.id.traffic_map, searchTrafficMapFragment);
+
                                 spinner3.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                                     @Override
                                     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
@@ -270,7 +293,8 @@ public class SearchActivity extends AppCompatActivity {
 
                         }
                     });
-                } else if (adspin1.getItem(position).equals("울산광역시")) {
+                }
+                else if (adspin1.getItem(position).equals("울산광역시")) {
                     choice_do = "울산광역시";
                     adspin2 = ArrayAdapter.createFromResource(SearchActivity.this, R.array.울산광역시, android.R.layout.simple_spinner_dropdown_item);
                     adspin2.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -287,6 +311,12 @@ public class SearchActivity extends AppCompatActivity {
 
                                 find_weather("Ulsan");
                                 temp_div.setVisibility(View.VISIBLE);
+
+                                bundle.putDouble("search_Latitude", 35.431162);
+                                bundle.putDouble("search_Longitude", 129.340414);
+                                searchTrafficMapFragment.setArguments(bundle);
+                                fragmentTransaction.replace(R.id.traffic_map, searchTrafficMapFragment);
+
                                 spinner3.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                                     @Override
                                     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
@@ -306,7 +336,8 @@ public class SearchActivity extends AppCompatActivity {
 
                         }
                     });
-                } else if (adspin1.getItem(position).equals("인천광역시")) {
+                }
+                else if (adspin1.getItem(position).equals("인천광역시")) {
                     choice_do = "인천광역시";
                     adspin2 = ArrayAdapter.createFromResource(SearchActivity.this, R.array.인천광역시, android.R.layout.simple_spinner_dropdown_item);
                     adspin2.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -323,6 +354,12 @@ public class SearchActivity extends AppCompatActivity {
 
                                 find_weather("Kanghwa");
                                 temp_div.setVisibility(View.VISIBLE);
+
+                                bundle.putDouble("search_Latitude", 37.709357);
+                                bundle.putDouble("search_Longitude", 126.452580);
+                                searchTrafficMapFragment.setArguments(bundle);
+                                fragmentTransaction.replace(R.id.traffic_map, searchTrafficMapFragment);
+
                                 spinner3.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                                     @Override
                                     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
@@ -342,7 +379,8 @@ public class SearchActivity extends AppCompatActivity {
 
                         }
                     });
-                } else if (adspin1.getItem(position).equals("제주특별자치도")) {
+                }
+                else if (adspin1.getItem(position).equals("제주특별자치도")) {
                     choice_do = "제주특별자치도";
                     adspin2 = ArrayAdapter.createFromResource(SearchActivity.this, R.array.제주특별자치도, android.R.layout.simple_spinner_dropdown_item);
                     adspin2.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -364,6 +402,11 @@ public class SearchActivity extends AppCompatActivity {
                                         if(adspin3.getItem(position).equals("애월읍")) {
                                             find_weather("Gaigeturi");
                                             temp_div.setVisibility(View.VISIBLE);
+
+                                            bundle.putDouble("search_Latitude", 33.455305);
+                                            bundle.putDouble("search_Longitude", 126.326646);
+                                            searchTrafficMapFragment.setArguments(bundle);
+                                            fragmentTransaction.replace(R.id.traffic_map, searchTrafficMapFragment);
                                         }
                                     }
 
@@ -380,7 +423,8 @@ public class SearchActivity extends AppCompatActivity {
 
                         }
                     });
-                } else if (adspin1.getItem(position).equals("경기도")) {
+                }
+                else if (adspin1.getItem(position).equals("경기도")) {
                     choice_do = "경기도";
                     adspin2 = ArrayAdapter.createFromResource(SearchActivity.this, R.array.경기도, android.R.layout.simple_spinner_dropdown_item);
                     adspin2.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -402,6 +446,11 @@ public class SearchActivity extends AppCompatActivity {
                                         if(adspin3.getItem(position).equals("문산읍")) {
                                             find_weather("Munsan");
                                             temp_div.setVisibility(View.VISIBLE);
+
+                                            bundle.putDouble("search_Latitude", 37.861703);
+                                            bundle.putDouble("search_Longitude", 126.788306);
+                                            searchTrafficMapFragment.setArguments(bundle);
+                                            fragmentTransaction.replace(R.id.traffic_map, searchTrafficMapFragment);
                                         }
                                     }
 
@@ -423,6 +472,11 @@ public class SearchActivity extends AppCompatActivity {
                                         if(adspin3.getItem(position).equals("창수면")) {
                                             find_weather("Changsu");
                                             temp_div.setVisibility(View.VISIBLE);
+
+                                            bundle.putDouble("search_Latitude", 37.991188);
+                                            bundle.putDouble("search_Longitude", 127.188818);
+                                            searchTrafficMapFragment.setArguments(bundle);
+                                            fragmentTransaction.replace(R.id.traffic_map, searchTrafficMapFragment);
                                         }
                                     }
 
@@ -444,6 +498,11 @@ public class SearchActivity extends AppCompatActivity {
                                         if(adspin3.getItem(position).equals("부발읍")) {
                                             find_weather("Pubal");
                                             temp_div.setVisibility(View.VISIBLE);
+
+                                            bundle.putDouble("search_Latitude", 37.283160);
+                                            bundle.putDouble("search_Longitude", 127.488413);
+                                            searchTrafficMapFragment.setArguments(bundle);
+                                            fragmentTransaction.replace(R.id.traffic_map, searchTrafficMapFragment);
                                         }
                                     }
 
@@ -465,10 +524,20 @@ public class SearchActivity extends AppCompatActivity {
                                         if(adspin3.getItem(position).equals("화도읍")) {
                                             find_weather("Hwado");
                                             temp_div.setVisibility(View.VISIBLE);
+
+                                            bundle.putDouble("search_Latitude", 37.651298);
+                                            bundle.putDouble("search_Longitude", 127.306880);
+                                            searchTrafficMapFragment.setArguments(bundle);
+                                            fragmentTransaction.replace(R.id.traffic_map, searchTrafficMapFragment);
                                         }
                                         else if(adspin3.getItem(position).equals("와부읍")) {
                                             find_weather("Wabu");
                                             temp_div.setVisibility(View.VISIBLE);
+
+                                            bundle.putDouble("search_Latitude", 37.587337);
+                                            bundle.putDouble("search_Longitude", 127.217767);
+                                            searchTrafficMapFragment.setArguments(bundle);
+                                            fragmentTransaction.replace(R.id.traffic_map, searchTrafficMapFragment);
                                         }
                                     }
 
@@ -490,6 +559,11 @@ public class SearchActivity extends AppCompatActivity {
                                         if(adspin3.getItem(position).equals("이선리")) {
                                             find_weather("Eisen");
                                             temp_div.setVisibility(View.VISIBLE);
+
+                                            bundle.putDouble("search_Latitude", 37.357712);
+                                            bundle.putDouble("search_Longitude", 127.424199);
+                                            searchTrafficMapFragment.setArguments(bundle);
+                                            fragmentTransaction.replace(R.id.traffic_map, searchTrafficMapFragment);
                                         }
                                     }
 
@@ -506,6 +580,12 @@ public class SearchActivity extends AppCompatActivity {
 
                                 find_weather("yeoncheongun");
                                 temp_div.setVisibility(View.VISIBLE);
+
+                                bundle.putDouble("search_Latitude", 38.099412);
+                                bundle.putDouble("search_Longitude", 127.068874);
+                                searchTrafficMapFragment.setArguments(bundle);
+                                fragmentTransaction.replace(R.id.traffic_map, searchTrafficMapFragment);
+
                                 spinner3.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                                     @Override
                                     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
@@ -525,6 +605,12 @@ public class SearchActivity extends AppCompatActivity {
 
                                 find_weather("Yeoju");
                                 temp_div.setVisibility(View.VISIBLE);
+
+                                bundle.putDouble("search_Latitude", 37.296487);
+                                bundle.putDouble("search_Longitude", 127.617060);
+                                searchTrafficMapFragment.setArguments(bundle);
+                                fragmentTransaction.replace(R.id.traffic_map, searchTrafficMapFragment);
+
                                 spinner3.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                                     @Override
                                     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
@@ -544,6 +630,12 @@ public class SearchActivity extends AppCompatActivity {
 
                                 find_weather("Yangpyong");
                                 temp_div.setVisibility(View.VISIBLE);
+
+                                bundle.putDouble("search_Latitude", 37.490443);
+                                bundle.putDouble("search_Longitude", 127.494238);
+                                searchTrafficMapFragment.setArguments(bundle);
+                                fragmentTransaction.replace(R.id.traffic_map, searchTrafficMapFragment);
+
                                 spinner3.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                                     @Override
                                     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
@@ -563,6 +655,12 @@ public class SearchActivity extends AppCompatActivity {
 
                                 find_weather("Yangju");
                                 temp_div.setVisibility(View.VISIBLE);
+
+                                bundle.putDouble("search_Latitude", 37.804847);
+                                bundle.putDouble("search_Longitude", 126.997120);
+                                searchTrafficMapFragment.setArguments(bundle);
+                                fragmentTransaction.replace(R.id.traffic_map, searchTrafficMapFragment);
+
                                 spinner3.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                                     @Override
                                     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
@@ -582,6 +680,12 @@ public class SearchActivity extends AppCompatActivity {
 
                                 find_weather("Vijongbu");
                                 temp_div.setVisibility(View.VISIBLE);
+
+                                bundle.putDouble("search_Latitude", 37.736938);
+                                bundle.putDouble("search_Longitude", 127.058781);
+                                searchTrafficMapFragment.setArguments(bundle);
+                                fragmentTransaction.replace(R.id.traffic_map, searchTrafficMapFragment);
+
                                 spinner3.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                                     @Override
                                     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
@@ -601,6 +705,12 @@ public class SearchActivity extends AppCompatActivity {
 
                                 find_weather("Suigen");
                                 temp_div.setVisibility(View.VISIBLE);
+
+                                bundle.putDouble("search_Latitude", 37.280661);
+                                bundle.putDouble("search_Longitude", 127.007488);
+                                searchTrafficMapFragment.setArguments(bundle);
+                                fragmentTransaction.replace(R.id.traffic_map, searchTrafficMapFragment);
+
                                 spinner3.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                                     @Override
                                     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
@@ -620,6 +730,12 @@ public class SearchActivity extends AppCompatActivity {
 
                                 find_weather("Bucheon");
                                 temp_div.setVisibility(View.VISIBLE);
+
+                                bundle.putDouble("search_Latitude", 37.503980);
+                                bundle.putDouble("search_Longitude", 126.785688);
+                                searchTrafficMapFragment.setArguments(bundle);
+                                fragmentTransaction.replace(R.id.traffic_map, searchTrafficMapFragment);
+
                                 spinner3.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                                     @Override
                                     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
@@ -639,6 +755,12 @@ public class SearchActivity extends AppCompatActivity {
 
                                 find_weather("Osan");
                                 temp_div.setVisibility(View.VISIBLE);
+
+                                bundle.putDouble("search_Latitude", 37.161845);
+                                bundle.putDouble("search_Longitude", 127.051822);
+                                searchTrafficMapFragment.setArguments(bundle);
+                                fragmentTransaction.replace(R.id.traffic_map, searchTrafficMapFragment);
+
                                 spinner3.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                                     @Override
                                     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
@@ -658,6 +780,12 @@ public class SearchActivity extends AppCompatActivity {
 
                                 find_weather("Kuri");
                                 temp_div.setVisibility(View.VISIBLE);
+
+                                bundle.putDouble("search_Latitude", 37.597230);
+                                bundle.putDouble("search_Longitude", 127.130928);
+                                searchTrafficMapFragment.setArguments(bundle);
+                                fragmentTransaction.replace(R.id.traffic_map, searchTrafficMapFragment);
+
                                 spinner3.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                                     @Override
                                     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
@@ -677,6 +805,12 @@ public class SearchActivity extends AppCompatActivity {
 
                                 find_weather("Goyang");
                                 temp_div.setVisibility(View.VISIBLE);
+
+                                bundle.putDouble("search_Latitude", 37.660936);
+                                bundle.putDouble("search_Longitude", 126.832317);
+                                searchTrafficMapFragment.setArguments(bundle);
+                                fragmentTransaction.replace(R.id.traffic_map, searchTrafficMapFragment);
+
                                 spinner3.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                                     @Override
                                     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
@@ -696,6 +830,12 @@ public class SearchActivity extends AppCompatActivity {
 
                                 find_weather("Gapyeong");
                                 temp_div.setVisibility(View.VISIBLE);
+
+                                bundle.putDouble("search_Latitude", 37.825333);
+                                bundle.putDouble("search_Longitude", 127.510952);
+                                searchTrafficMapFragment.setArguments(bundle);
+                                fragmentTransaction.replace(R.id.traffic_map, searchTrafficMapFragment);
+
                                 spinner3.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                                     @Override
                                     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
@@ -715,6 +855,12 @@ public class SearchActivity extends AppCompatActivity {
 
                                 find_weather("Hwaseong");
                                 temp_div.setVisibility(View.VISIBLE);
+
+                                bundle.putDouble("search_Latitude", 37.209160);
+                                bundle.putDouble("search_Longitude", 127.052128);
+                                searchTrafficMapFragment.setArguments(bundle);
+                                fragmentTransaction.replace(R.id.traffic_map, searchTrafficMapFragment);
+
                                 spinner3.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                                     @Override
                                     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
@@ -734,6 +880,12 @@ public class SearchActivity extends AppCompatActivity {
 
                                 find_weather("Anyang");
                                 temp_div.setVisibility(View.VISIBLE);
+
+                                bundle.putDouble("search_Latitude", 37.401908);
+                                bundle.putDouble("search_Longitude", 126.922459);
+                                searchTrafficMapFragment.setArguments(bundle);
+                                fragmentTransaction.replace(R.id.traffic_map, searchTrafficMapFragment);
+
                                 spinner3.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                                     @Override
                                     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
@@ -753,6 +905,12 @@ public class SearchActivity extends AppCompatActivity {
 
                                 find_weather("Anseong");
                                 temp_div.setVisibility(View.VISIBLE);
+
+                                bundle.putDouble("search_Latitude", 37.011814);
+                                bundle.putDouble("search_Longitude", 127.265906);
+                                searchTrafficMapFragment.setArguments(bundle);
+                                fragmentTransaction.replace(R.id.traffic_map, searchTrafficMapFragment);
+
                                 spinner3.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                                     @Override
                                     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
@@ -772,6 +930,12 @@ public class SearchActivity extends AppCompatActivity {
 
                                 find_weather("Ansan");
                                 temp_div.setVisibility(View.VISIBLE);
+
+                                bundle.putDouble("search_Latitude", 37.321227);
+                                bundle.putDouble("search_Longitude", 126.829690);
+                                searchTrafficMapFragment.setArguments(bundle);
+                                fragmentTransaction.replace(R.id.traffic_map, searchTrafficMapFragment);
+
                                 spinner3.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                                     @Override
                                     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
@@ -791,6 +955,12 @@ public class SearchActivity extends AppCompatActivity {
 
                                 find_weather("Seongnam");
                                 temp_div.setVisibility(View.VISIBLE);
+
+                                bundle.putDouble("search_Latitude", 37.404857);
+                                bundle.putDouble("search_Longitude", 127.116232);
+                                searchTrafficMapFragment.setArguments(bundle);
+                                fragmentTransaction.replace(R.id.traffic_map, searchTrafficMapFragment);
+
                                 spinner3.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                                     @Override
                                     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
@@ -810,6 +980,12 @@ public class SearchActivity extends AppCompatActivity {
 
                                 find_weather("Hanam");
                                 temp_div.setVisibility(View.VISIBLE);
+
+                                bundle.putDouble("search_Latitude", 37.541103);
+                                bundle.putDouble("search_Longitude", 127.205237);
+                                searchTrafficMapFragment.setArguments(bundle);
+                                fragmentTransaction.replace(R.id.traffic_map, searchTrafficMapFragment);
+
                                 spinner3.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                                     @Override
                                     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
@@ -829,6 +1005,12 @@ public class SearchActivity extends AppCompatActivity {
 
                                 find_weather("Kwangmyong");
                                 temp_div.setVisibility(View.VISIBLE);
+
+                                bundle.putDouble("search_Latitude", 37.475438);
+                                bundle.putDouble("search_Longitude", 126.866094);
+                                searchTrafficMapFragment.setArguments(bundle);
+                                fragmentTransaction.replace(R.id.traffic_map, searchTrafficMapFragment);
+
                                 spinner3.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                                     @Override
                                     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
@@ -848,7 +1030,8 @@ public class SearchActivity extends AppCompatActivity {
 
                         }
                     });
-                } else if (adspin1.getItem(position).equals("강원도")) {
+                }
+                else if (adspin1.getItem(position).equals("강원도")) {
                     choice_do = "강원도";
                     adspin2 = ArrayAdapter.createFromResource(SearchActivity.this, R.array.강원도, android.R.layout.simple_spinner_dropdown_item);
                     adspin2.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -865,6 +1048,12 @@ public class SearchActivity extends AppCompatActivity {
 
                                 find_weather("Neietsu");
                                 temp_div.setVisibility(View.VISIBLE);
+
+                                bundle.putDouble("search_Latitude", 37.186723);
+                                bundle.putDouble("search_Longitude", 128.465713);
+                                searchTrafficMapFragment.setArguments(bundle);
+                                fragmentTransaction.replace(R.id.traffic_map, searchTrafficMapFragment);
+
                                 spinner3.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                                     @Override
                                     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
@@ -884,6 +1073,12 @@ public class SearchActivity extends AppCompatActivity {
 
                                 find_weather("Yanggu");
                                 temp_div.setVisibility(View.VISIBLE);
+
+                                bundle.putDouble("search_Latitude", 38.106001);
+                                bundle.putDouble("search_Longitude", 127.989075);
+                                searchTrafficMapFragment.setArguments(bundle);
+                                fragmentTransaction.replace(R.id.traffic_map, searchTrafficMapFragment);
+
                                 spinner3.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                                     @Override
                                     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
@@ -903,6 +1098,12 @@ public class SearchActivity extends AppCompatActivity {
 
                                 find_weather("Wonju");
                                 temp_div.setVisibility(View.VISIBLE);
+
+                                bundle.putDouble("search_Latitude", 37.344178);
+                                bundle.putDouble("search_Longitude", 127.951441);
+                                searchTrafficMapFragment.setArguments(bundle);
+                                fragmentTransaction.replace(R.id.traffic_map, searchTrafficMapFragment);
+
                                 spinner3.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                                     @Override
                                     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
@@ -922,6 +1123,12 @@ public class SearchActivity extends AppCompatActivity {
 
                                 find_weather("Taebaek");
                                 temp_div.setVisibility(View.VISIBLE);
+
+                                bundle.putDouble("search_Latitude", 37.162163);
+                                bundle.putDouble("search_Longitude", 128.987005);
+                                searchTrafficMapFragment.setArguments(bundle);
+                                fragmentTransaction.replace(R.id.traffic_map, searchTrafficMapFragment);
+
                                 spinner3.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                                     @Override
                                     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
@@ -941,6 +1148,12 @@ public class SearchActivity extends AppCompatActivity {
 
                                 find_weather("Sogcho");
                                 temp_div.setVisibility(View.VISIBLE);
+
+                                bundle.putDouble("search_Latitude", 38.206993);
+                                bundle.putDouble("search_Longitude", 128.577170);
+                                searchTrafficMapFragment.setArguments(bundle);
+                                fragmentTransaction.replace(R.id.traffic_map, searchTrafficMapFragment);
+
                                 spinner3.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                                     @Override
                                     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
@@ -960,6 +1173,12 @@ public class SearchActivity extends AppCompatActivity {
 
                                 find_weather("Santyoku");
                                 temp_div.setVisibility(View.VISIBLE);
+
+                                bundle.putDouble("search_Latitude", 37.443957);
+                                bundle.putDouble("search_Longitude", 129.159443);
+                                searchTrafficMapFragment.setArguments(bundle);
+                                fragmentTransaction.replace(R.id.traffic_map, searchTrafficMapFragment);
+
                                 spinner3.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                                     @Override
                                     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
@@ -979,6 +1198,12 @@ public class SearchActivity extends AppCompatActivity {
 
                                 find_weather("Kang-neung");
                                 temp_div.setVisibility(View.VISIBLE);
+
+                                bundle.putDouble("search_Latitude", 37.757995);
+                                bundle.putDouble("search_Longitude", 128.891419);
+                                searchTrafficMapFragment.setArguments(bundle);
+                                fragmentTransaction.replace(R.id.traffic_map, searchTrafficMapFragment);
+
                                 spinner3.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                                     @Override
                                     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
@@ -998,6 +1223,12 @@ public class SearchActivity extends AppCompatActivity {
 
                                 find_weather("Hwacheon");
                                 temp_div.setVisibility(View.VISIBLE);
+
+                                bundle.putDouble("search_Latitude", 38.105383);
+                                bundle.putDouble("search_Longitude", 127.706252);
+                                searchTrafficMapFragment.setArguments(bundle);
+                                fragmentTransaction.replace(R.id.traffic_map, searchTrafficMapFragment);
+
                                 spinner3.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                                     @Override
                                     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
@@ -1017,6 +1248,12 @@ public class SearchActivity extends AppCompatActivity {
 
                                 find_weather("Hongchon");
                                 temp_div.setVisibility(View.VISIBLE);
+
+                                bundle.putDouble("search_Latitude", 37.690009);
+                                bundle.putDouble("search_Longitude", 127.884168);
+                                searchTrafficMapFragment.setArguments(bundle);
+                                fragmentTransaction.replace(R.id.traffic_map, searchTrafficMapFragment);
+
                                 spinner3.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                                     @Override
                                     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
@@ -1036,6 +1273,12 @@ public class SearchActivity extends AppCompatActivity {
 
                                 find_weather("Chuncheon");
                                 temp_div.setVisibility(View.VISIBLE);
+
+                                bundle.putDouble("search_Latitude", 37.887489);
+                                bundle.putDouble("search_Longitude", 127.738713);
+                                searchTrafficMapFragment.setArguments(bundle);
+                                fragmentTransaction.replace(R.id.traffic_map, searchTrafficMapFragment);
+
                                 spinner3.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                                     @Override
                                     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
@@ -1055,6 +1298,12 @@ public class SearchActivity extends AppCompatActivity {
 
                                 find_weather("Tonghae");
                                 temp_div.setVisibility(View.VISIBLE);
+
+                                bundle.putDouble("search_Latitude", 37.522638);
+                                bundle.putDouble("search_Longitude", 129.108875);
+                                searchTrafficMapFragment.setArguments(bundle);
+                                fragmentTransaction.replace(R.id.traffic_map, searchTrafficMapFragment);
+
                                 spinner3.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                                     @Override
                                     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
@@ -1074,7 +1323,8 @@ public class SearchActivity extends AppCompatActivity {
 
                         }
                     });
-                } else if (adspin1.getItem(position).equals("충청남도")) {
+                }
+                else if (adspin1.getItem(position).equals("충청남도")) {
                     choice_do = "충청남도";
                     adspin2 = ArrayAdapter.createFromResource(SearchActivity.this, R.array.충청남도, android.R.layout.simple_spinner_dropdown_item);
                     adspin2.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -1096,6 +1346,11 @@ public class SearchActivity extends AppCompatActivity {
                                         if(adspin3.getItem(position).equals("태산리")) {
                                             find_weather("Taesal-li");
                                             temp_div.setVisibility(View.VISIBLE);
+
+                                            bundle.putDouble("search_Latitude", 36.554720);
+                                            bundle.putDouble("search_Longitude", 127.192761);
+                                            searchTrafficMapFragment.setArguments(bundle);
+                                            fragmentTransaction.replace(R.id.traffic_map, searchTrafficMapFragment);
                                         }
                                     }
 
@@ -1117,6 +1372,11 @@ public class SearchActivity extends AppCompatActivity {
                                         if(adspin3.getItem(position).equals("전산면")) {
                                             find_weather("Jenzan");
                                             temp_div.setVisibility(View.VISIBLE);
+
+                                            bundle.putDouble("search_Latitude", 36.143337);
+                                            bundle.putDouble("search_Longitude", 127.370681);
+                                            searchTrafficMapFragment.setArguments(bundle);
+                                            fragmentTransaction.replace(R.id.traffic_map, searchTrafficMapFragment);
                                         }
                                     }
 
@@ -1138,6 +1398,11 @@ public class SearchActivity extends AppCompatActivity {
                                         if(adspin3.getItem(position).equals("기산면")) {
                                             find_weather("Keizan");
                                             temp_div.setVisibility(View.VISIBLE);
+
+                                            bundle.putDouble("search_Latitude", 36.074144);
+                                            bundle.putDouble("search_Longitude", 126.761912);
+                                            searchTrafficMapFragment.setArguments(bundle);
+                                            fragmentTransaction.replace(R.id.traffic_map, searchTrafficMapFragment);
                                         }
                                     }
 
@@ -1159,6 +1424,11 @@ public class SearchActivity extends AppCompatActivity {
                                         if(adspin3.getItem(position).equals("배방읍")) {
                                             find_weather("Tenan");
                                             temp_div.setVisibility(View.VISIBLE);
+
+                                            bundle.putDouble("search_Latitude", 36.774336);
+                                            bundle.putDouble("search_Longitude", 127.056738);
+                                            searchTrafficMapFragment.setArguments(bundle);
+                                            fragmentTransaction.replace(R.id.traffic_map, searchTrafficMapFragment);
                                         }
                                     }
 
@@ -1180,6 +1450,11 @@ public class SearchActivity extends AppCompatActivity {
                                         if(adspin3.getItem(position).equals("연무읍")) {
                                             find_weather("Yonmu");
                                             temp_div.setVisibility(View.VISIBLE);
+
+                                            bundle.putDouble("search_Latitude", 36.125704);
+                                            bundle.putDouble("search_Longitude", 127.098282);
+                                            searchTrafficMapFragment.setArguments(bundle);
+                                            fragmentTransaction.replace(R.id.traffic_map, searchTrafficMapFragment);
                                         }
                                     }
 
@@ -1196,6 +1471,12 @@ public class SearchActivity extends AppCompatActivity {
 
                                 find_weather("Yesan");
                                 temp_div.setVisibility(View.VISIBLE);
+
+                                bundle.putDouble("search_Latitude", 36.683169);
+                                bundle.putDouble("search_Longitude", 126.839395);
+                                searchTrafficMapFragment.setArguments(bundle);
+                                fragmentTransaction.replace(R.id.traffic_map, searchTrafficMapFragment);
+
                                 spinner3.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                                     @Override
                                     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
@@ -1207,14 +1488,20 @@ public class SearchActivity extends AppCompatActivity {
 
                                     }
                                 });
-                            } else if (adspin2.getItem(position).equals("당진군")) {
-                                choice_do = "당진군";
-                                adspin3 = ArrayAdapter.createFromResource(SearchActivity.this, R.array.당진군, android.R.layout.simple_spinner_dropdown_item);
+                            } else if (adspin2.getItem(position).equals("당진시")) {
+                                choice_do = "당진시";
+                                adspin3 = ArrayAdapter.createFromResource(SearchActivity.this, R.array.당진시, android.R.layout.simple_spinner_dropdown_item);
                                 adspin3.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
                                 spinner3.setAdapter(adspin3);
 
                                 find_weather("Tangjin");
                                 temp_div.setVisibility(View.VISIBLE);
+
+                                bundle.putDouble("search_Latitude", 36.905013);
+                                bundle.putDouble("search_Longitude", 126.648212);
+                                searchTrafficMapFragment.setArguments(bundle);
+                                fragmentTransaction.replace(R.id.traffic_map, searchTrafficMapFragment);
+
                                 spinner3.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                                     @Override
                                     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
@@ -1234,6 +1521,12 @@ public class SearchActivity extends AppCompatActivity {
 
                                 find_weather("Taisen-ri");
                                 temp_div.setVisibility(View.VISIBLE);
+
+                                bundle.putDouble("search_Latitude", 36.348698);
+                                bundle.putDouble("search_Longitude", 126.598508);
+                                searchTrafficMapFragment.setArguments(bundle);
+                                fragmentTransaction.replace(R.id.traffic_map, searchTrafficMapFragment);
+
                                 spinner3.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                                     @Override
                                     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
@@ -1253,6 +1546,12 @@ public class SearchActivity extends AppCompatActivity {
 
                                 find_weather("Suisan");
                                 temp_div.setVisibility(View.VISIBLE);
+
+                                bundle.putDouble("search_Latitude", 36.783060);
+                                bundle.putDouble("search_Longitude", 126.450980);
+                                searchTrafficMapFragment.setArguments(bundle);
+                                fragmentTransaction.replace(R.id.traffic_map, searchTrafficMapFragment);
+
                                 spinner3.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                                     @Override
                                     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
@@ -1272,6 +1571,12 @@ public class SearchActivity extends AppCompatActivity {
 
                                 find_weather("Fuyo");
                                 temp_div.setVisibility(View.VISIBLE);
+
+                                bundle.putDouble("search_Latitude", 36.275822);
+                                bundle.putDouble("search_Longitude", 126.910506);
+                                searchTrafficMapFragment.setArguments(bundle);
+                                fragmentTransaction.replace(R.id.traffic_map, searchTrafficMapFragment);
+
                                 spinner3.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                                     @Override
                                     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
@@ -1291,6 +1596,12 @@ public class SearchActivity extends AppCompatActivity {
 
                                 find_weather("Hongsung");
                                 temp_div.setVisibility(View.VISIBLE);
+
+                                bundle.putDouble("search_Latitude", 36.600776);
+                                bundle.putDouble("search_Longitude", 126.661922);
+                                searchTrafficMapFragment.setArguments(bundle);
+                                fragmentTransaction.replace(R.id.traffic_map, searchTrafficMapFragment);
+
                                 spinner3.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                                     @Override
                                     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
@@ -1310,7 +1621,8 @@ public class SearchActivity extends AppCompatActivity {
 
                         }
                     });
-                } else if (adspin1.getItem(position).equals("충청북도")) {
+                }
+                else if (adspin1.getItem(position).equals("충청북도")) {
                     choice_do = "충청북도";
                     adspin2 = ArrayAdapter.createFromResource(SearchActivity.this, R.array.충청북도, android.R.layout.simple_spinner_dropdown_item);
                     adspin2.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -1327,6 +1639,12 @@ public class SearchActivity extends AppCompatActivity {
 
                                 find_weather("Yong-dong");
                                 temp_div.setVisibility(View.VISIBLE);
+
+                                bundle.putDouble("search_Latitude", 36.174431);
+                                bundle.putDouble("search_Longitude", 127.779149);
+                                searchTrafficMapFragment.setArguments(bundle);
+                                fragmentTransaction.replace(R.id.traffic_map, searchTrafficMapFragment);
+
                                 spinner3.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                                     @Override
                                     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
@@ -1346,6 +1664,12 @@ public class SearchActivity extends AppCompatActivity {
 
                                 find_weather("ogcheongun");
                                 temp_div.setVisibility(View.VISIBLE);
+
+                                bundle.putDouble("search_Latitude", 36.306148);
+                                bundle.putDouble("search_Longitude", 127.574824);
+                                searchTrafficMapFragment.setArguments(bundle);
+                                fragmentTransaction.replace(R.id.traffic_map, searchTrafficMapFragment);
+
                                 spinner3.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                                     @Override
                                     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
@@ -1365,6 +1689,12 @@ public class SearchActivity extends AppCompatActivity {
 
                                 find_weather("Cheongju");
                                 temp_div.setVisibility(View.VISIBLE);
+
+                                bundle.putDouble("search_Latitude", 36.628943);
+                                bundle.putDouble("search_Longitude", 127.480681);
+                                searchTrafficMapFragment.setArguments(bundle);
+                                fragmentTransaction.replace(R.id.traffic_map, searchTrafficMapFragment);
+
                                 spinner3.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                                     @Override
                                     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
@@ -1384,6 +1714,12 @@ public class SearchActivity extends AppCompatActivity {
 
                                 find_weather("Koesan");
                                 temp_div.setVisibility(View.VISIBLE);
+
+                                bundle.putDouble("search_Latitude", 36.810374);
+                                bundle.putDouble("search_Longitude", 127.790759);
+                                searchTrafficMapFragment.setArguments(bundle);
+                                fragmentTransaction.replace(R.id.traffic_map, searchTrafficMapFragment);
+
                                 spinner3.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                                     @Override
                                     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
@@ -1403,6 +1739,12 @@ public class SearchActivity extends AppCompatActivity {
 
                                 find_weather("Chinchon");
                                 temp_div.setVisibility(View.VISIBLE);
+
+                                bundle.putDouble("search_Latitude", 36.858973);
+                                bundle.putDouble("search_Longitude", 127.443160);
+                                searchTrafficMapFragment.setArguments(bundle);
+                                fragmentTransaction.replace(R.id.traffic_map, searchTrafficMapFragment);
+
                                 spinner3.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                                     @Override
                                     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
@@ -1422,7 +1764,8 @@ public class SearchActivity extends AppCompatActivity {
 
                         }
                     });
-                } else if (adspin1.getItem(position).equals("전라남도")) {
+                }
+                else if (adspin1.getItem(position).equals("전라남도")) {
                     choice_do = "전라남도";
                     adspin2 = ArrayAdapter.createFromResource(SearchActivity.this, R.array.전라남도, android.R.layout.simple_spinner_dropdown_item);
                     adspin2.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -1444,6 +1787,11 @@ public class SearchActivity extends AppCompatActivity {
                                         if(adspin3.getItem(position).equals("벌교읍")) {
                                             find_weather("Beolgyo");
                                             temp_div.setVisibility(View.VISIBLE);
+
+                                            bundle.putDouble("search_Latitude", 34.846574);
+                                            bundle.putDouble("search_Longitude", 127.341352);
+                                            searchTrafficMapFragment.setArguments(bundle);
+                                            fragmentTransaction.replace(R.id.traffic_map, searchTrafficMapFragment);
                                         }
                                     }
 
@@ -1460,6 +1808,11 @@ public class SearchActivity extends AppCompatActivity {
 
                                 find_weather("Haenam");
                                 temp_div.setVisibility(View.VISIBLE);
+                                bundle.putDouble("search_Latitude", 34.571918);
+                                bundle.putDouble("search_Longitude", 126.596354);
+                                searchTrafficMapFragment.setArguments(bundle);
+                                fragmentTransaction.replace(R.id.traffic_map, searchTrafficMapFragment);
+
                                 spinner3.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                                     @Override
                                     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
@@ -1467,6 +1820,11 @@ public class SearchActivity extends AppCompatActivity {
                                         if(adspin3.getItem(position).equals("화원면")) {
                                             find_weather("Hwawon");
                                             temp_div.setVisibility(View.VISIBLE);
+
+                                            bundle.putDouble("search_Latitude", 34.670997);
+                                            bundle.putDouble("search_Longitude", 126.327988);
+                                            searchTrafficMapFragment.setArguments(bundle);
+                                            fragmentTransaction.replace(R.id.traffic_map, searchTrafficMapFragment);
                                         }
                                     }
 
@@ -1488,6 +1846,11 @@ public class SearchActivity extends AppCompatActivity {
                                         if(adspin3.getItem(position).equals("호곡리")) {
                                             find_weather("Hoko");
                                             temp_div.setVisibility(View.VISIBLE);
+
+                                            bundle.putDouble("search_Latitude", 35.247585);
+                                            bundle.putDouble("search_Longitude", 127.366503);
+                                            searchTrafficMapFragment.setArguments(bundle);
+                                            fragmentTransaction.replace(R.id.traffic_map, searchTrafficMapFragment);
                                         }
                                     }
 
@@ -1504,6 +1867,12 @@ public class SearchActivity extends AppCompatActivity {
 
                                 find_weather("Reisui");
                                 temp_div.setVisibility(View.VISIBLE);
+
+                                bundle.putDouble("search_Latitude", 34.763495);
+                                bundle.putDouble("search_Longitude", 127.660951);
+                                searchTrafficMapFragment.setArguments(bundle);
+                                fragmentTransaction.replace(R.id.traffic_map, searchTrafficMapFragment);
+
                                 spinner3.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                                     @Override
                                     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
@@ -1523,6 +1892,12 @@ public class SearchActivity extends AppCompatActivity {
 
                                 find_weather("Reiko");
                                 temp_div.setVisibility(View.VISIBLE);
+
+                                bundle.putDouble("search_Latitude", 35.275622);
+                                bundle.putDouble("search_Longitude", 126.508938);
+                                searchTrafficMapFragment.setArguments(bundle);
+                                fragmentTransaction.replace(R.id.traffic_map, searchTrafficMapFragment);
+
                                 spinner3.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                                     @Override
                                     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
@@ -1542,6 +1917,12 @@ public class SearchActivity extends AppCompatActivity {
 
                                 find_weather("Sunchun");
                                 temp_div.setVisibility(View.VISIBLE);
+
+                                bundle.putDouble("search_Latitude", 34.952792);
+                                bundle.putDouble("search_Longitude", 127.512369);
+                                searchTrafficMapFragment.setArguments(bundle);
+                                fragmentTransaction.replace(R.id.traffic_map, searchTrafficMapFragment);
+
                                 spinner3.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                                     @Override
                                     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
@@ -1561,6 +1942,12 @@ public class SearchActivity extends AppCompatActivity {
 
                                 find_weather("Naju");
                                 temp_div.setVisibility(View.VISIBLE);
+
+                                bundle.putDouble("search_Latitude", 34.996461);
+                                bundle.putDouble("search_Longitude", 126.722486);
+                                searchTrafficMapFragment.setArguments(bundle);
+                                fragmentTransaction.replace(R.id.traffic_map, searchTrafficMapFragment);
+
                                 spinner3.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                                     @Override
                                     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
@@ -1580,6 +1967,12 @@ public class SearchActivity extends AppCompatActivity {
 
                                 find_weather("Moppo");
                                 temp_div.setVisibility(View.VISIBLE);
+
+                                bundle.putDouble("search_Latitude", 34.810861);
+                                bundle.putDouble("search_Longitude", 126.391310);
+                                searchTrafficMapFragment.setArguments(bundle);
+                                fragmentTransaction.replace(R.id.traffic_map, searchTrafficMapFragment);
+
                                 spinner3.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                                     @Override
                                     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
@@ -1599,6 +1992,12 @@ public class SearchActivity extends AppCompatActivity {
 
                                 find_weather("Kwangyang");
                                 temp_div.setVisibility(View.VISIBLE);
+
+                                bundle.putDouble("search_Latitude", 34.944218);
+                                bundle.putDouble("search_Longitude", 127.704147);
+                                searchTrafficMapFragment.setArguments(bundle);
+                                fragmentTransaction.replace(R.id.traffic_map, searchTrafficMapFragment);
+
                                 spinner3.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                                     @Override
                                     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
@@ -1618,6 +2017,12 @@ public class SearchActivity extends AppCompatActivity {
 
                                 find_weather("Kurye");
                                 temp_div.setVisibility(View.VISIBLE);
+
+                                bundle.putDouble("search_Latitude", 35.215362);
+                                bundle.putDouble("search_Longitude", 127.473759);
+                                searchTrafficMapFragment.setArguments(bundle);
+                                fragmentTransaction.replace(R.id.traffic_map, searchTrafficMapFragment);
+
                                 spinner3.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                                     @Override
                                     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
@@ -1637,6 +2042,12 @@ public class SearchActivity extends AppCompatActivity {
 
                                 find_weather("Hwasun");
                                 temp_div.setVisibility(View.VISIBLE);
+
+                                bundle.putDouble("search_Latitude", 35.020263);
+                                bundle.putDouble("search_Longitude", 127.025586);
+                                searchTrafficMapFragment.setArguments(bundle);
+                                fragmentTransaction.replace(R.id.traffic_map, searchTrafficMapFragment);
+
                                 spinner3.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                                     @Override
                                     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
@@ -1656,6 +2067,12 @@ public class SearchActivity extends AppCompatActivity {
 
                                 find_weather("Sinan");
                                 temp_div.setVisibility(View.VISIBLE);
+
+                                bundle.putDouble("search_Latitude", 34.824799);
+                                bundle.putDouble("search_Longitude", 126.100372);
+                                searchTrafficMapFragment.setArguments(bundle);
+                                fragmentTransaction.replace(R.id.traffic_map, searchTrafficMapFragment);
+
                                 spinner3.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                                     @Override
                                     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
@@ -1675,7 +2092,8 @@ public class SearchActivity extends AppCompatActivity {
 
                         }
                     });
-                } else if (adspin1.getItem(position).equals("전라북도")) {
+                }
+                else if (adspin1.getItem(position).equals("전라북도")) {
                     choice_do = "전라북도";
                     adspin2 = ArrayAdapter.createFromResource(SearchActivity.this, R.array.전라북도, android.R.layout.simple_spinner_dropdown_item);
                     adspin2.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -1692,6 +2110,12 @@ public class SearchActivity extends AppCompatActivity {
 
                                 find_weather("Wanju");
                                 temp_div.setVisibility(View.VISIBLE);
+
+                                bundle.putDouble("search_Latitude", 35.957998);
+                                bundle.putDouble("search_Longitude", 127.133555);
+                                searchTrafficMapFragment.setArguments(bundle);
+                                fragmentTransaction.replace(R.id.traffic_map, searchTrafficMapFragment);
+
                                 spinner3.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                                     @Override
                                     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
@@ -1711,6 +2135,12 @@ public class SearchActivity extends AppCompatActivity {
 
                                 find_weather("Puan");
                                 temp_div.setVisibility(View.VISIBLE);
+
+                                bundle.putDouble("search_Latitude", 35.726076);
+                                bundle.putDouble("search_Longitude", 126.731682);
+                                searchTrafficMapFragment.setArguments(bundle);
+                                fragmentTransaction.replace(R.id.traffic_map, searchTrafficMapFragment);
+
                                 spinner3.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                                     @Override
                                     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
@@ -1730,6 +2160,12 @@ public class SearchActivity extends AppCompatActivity {
 
                                 find_weather("Nangen");
                                 temp_div.setVisibility(View.VISIBLE);
+
+                                bundle.putDouble("search_Latitude", 35.416036);
+                                bundle.putDouble("search_Longitude", 127.388839);
+                                searchTrafficMapFragment.setArguments(bundle);
+                                fragmentTransaction.replace(R.id.traffic_map, searchTrafficMapFragment);
+
                                 spinner3.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                                     @Override
                                     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
@@ -1749,6 +2185,12 @@ public class SearchActivity extends AppCompatActivity {
 
                                 find_weather("Kunsan");
                                 temp_div.setVisibility(View.VISIBLE);
+
+                                bundle.putDouble("search_Latitude", 35.965833);
+                                bundle.putDouble("search_Longitude", 126.730106);
+                                searchTrafficMapFragment.setArguments(bundle);
+                                fragmentTransaction.replace(R.id.traffic_map, searchTrafficMapFragment);
+
                                 spinner3.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                                     @Override
                                     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
@@ -1768,6 +2210,12 @@ public class SearchActivity extends AppCompatActivity {
 
                                 find_weather("Kochang");
                                 temp_div.setVisibility(View.VISIBLE);
+
+                                bundle.putDouble("search_Latitude", 35.432052);
+                                bundle.putDouble("search_Longitude", 126.703029);
+                                searchTrafficMapFragment.setArguments(bundle);
+                                fragmentTransaction.replace(R.id.traffic_map, searchTrafficMapFragment);
+
                                 spinner3.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                                     @Override
                                     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
@@ -1787,6 +2235,12 @@ public class SearchActivity extends AppCompatActivity {
 
                                 find_weather("Kimje");
                                 temp_div.setVisibility(View.VISIBLE);
+
+                                bundle.putDouble("search_Latitude", 35.800520);
+                                bundle.putDouble("search_Longitude", 126.888046);
+                                searchTrafficMapFragment.setArguments(bundle);
+                                fragmentTransaction.replace(R.id.traffic_map, searchTrafficMapFragment);
+
                                 spinner3.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                                     @Override
                                     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
@@ -1806,6 +2260,12 @@ public class SearchActivity extends AppCompatActivity {
 
                                 find_weather("Iksan");
                                 temp_div.setVisibility(View.VISIBLE);
+
+                                bundle.putDouble("search_Latitude", 35.951149);
+                                bundle.putDouble("search_Longitude", 126.972580);
+                                searchTrafficMapFragment.setArguments(bundle);
+                                fragmentTransaction.replace(R.id.traffic_map, searchTrafficMapFragment);
+
                                 spinner3.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                                     @Override
                                     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
@@ -1825,6 +2285,12 @@ public class SearchActivity extends AppCompatActivity {
 
                                 find_weather("Imsil");
                                 temp_div.setVisibility(View.VISIBLE);
+
+                                bundle.putDouble("search_Latitude", 35.577249);
+                                bundle.putDouble("search_Longitude", 127.213319);
+                                searchTrafficMapFragment.setArguments(bundle);
+                                fragmentTransaction.replace(R.id.traffic_map, searchTrafficMapFragment);
+
                                 spinner3.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                                     @Override
                                     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
@@ -1844,6 +2310,12 @@ public class SearchActivity extends AppCompatActivity {
 
                                 find_weather("Jeonju");
                                 temp_div.setVisibility(View.VISIBLE);
+
+                                bundle.putDouble("search_Latitude", 35.827024);
+                                bundle.putDouble("search_Longitude", 127.115292);
+                                searchTrafficMapFragment.setArguments(bundle);
+                                fragmentTransaction.replace(R.id.traffic_map, searchTrafficMapFragment);
+
                                 spinner3.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                                     @Override
                                     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
@@ -1863,6 +2335,12 @@ public class SearchActivity extends AppCompatActivity {
 
                                 find_weather("jin-angun");
                                 temp_div.setVisibility(View.VISIBLE);
+
+                                bundle.putDouble("search_Latitude", 35.788620);
+                                bundle.putDouble("search_Longitude", 127.425897);
+                                searchTrafficMapFragment.setArguments(bundle);
+                                fragmentTransaction.replace(R.id.traffic_map, searchTrafficMapFragment);
+
                                 spinner3.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                                     @Override
                                     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
@@ -1882,7 +2360,8 @@ public class SearchActivity extends AppCompatActivity {
 
                         }
                     });
-                } else if (adspin1.getItem(position).equals("경상남도")) {
+                }
+                else if (adspin1.getItem(position).equals("경상남도")) {
                     choice_do = "경상남도";
                     adspin2 = ArrayAdapter.createFromResource(SearchActivity.this, R.array.경상남도, android.R.layout.simple_spinner_dropdown_item);
                     adspin2.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -1899,6 +2378,11 @@ public class SearchActivity extends AppCompatActivity {
 
                                 find_weather("Kyosai");
                                 temp_div.setVisibility(View.VISIBLE);
+                                bundle.putDouble("search_Latitude", 34.893441);
+                                bundle.putDouble("search_Longitude", 128.685118);
+                                searchTrafficMapFragment.setArguments(bundle);
+                                fragmentTransaction.replace(R.id.traffic_map, searchTrafficMapFragment);
+
                                 spinner3.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                                     @Override
                                     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
@@ -1906,6 +2390,11 @@ public class SearchActivity extends AppCompatActivity {
                                         if(adspin3.getItem(position).equals("신현읍")) {
                                             find_weather("Sinhyeon");
                                             temp_div.setVisibility(View.VISIBLE);
+
+                                            bundle.putDouble("search_Latitude", 34.880638);
+                                            bundle.putDouble("search_Longitude", 128.622926);
+                                            searchTrafficMapFragment.setArguments(bundle);
+                                            fragmentTransaction.replace(R.id.traffic_map, searchTrafficMapFragment);
                                         }
                                     }
 
@@ -1922,6 +2411,12 @@ public class SearchActivity extends AppCompatActivity {
 
                                 find_weather("Miryang");
                                 temp_div.setVisibility(View.VISIBLE);
+
+                                bundle.putDouble("search_Latitude", 35.484311);
+                                bundle.putDouble("search_Longitude", 128.752201);
+                                searchTrafficMapFragment.setArguments(bundle);
+                                fragmentTransaction.replace(R.id.traffic_map, searchTrafficMapFragment);
+
                                 spinner3.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                                     @Override
                                     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
@@ -1942,6 +2437,12 @@ public class SearchActivity extends AppCompatActivity {
 
                                 find_weather("Yangsan");
                                 temp_div.setVisibility(View.VISIBLE);
+
+                                bundle.putDouble("search_Latitude", 35.338691);
+                                bundle.putDouble("search_Longitude", 129.025319);
+                                searchTrafficMapFragment.setArguments(bundle);
+                                fragmentTransaction.replace(R.id.traffic_map, searchTrafficMapFragment);
+
                                 spinner3.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                                     @Override
                                     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
@@ -1949,6 +2450,11 @@ public class SearchActivity extends AppCompatActivity {
                                         if(adspin3.getItem(position).equals("웅상읍")) {
                                             find_weather("Ungsang");
                                             temp_div.setVisibility(View.VISIBLE);
+
+                                            bundle.putDouble("search_Latitude", 35.377010);
+                                            bundle.putDouble("search_Longitude", 129.147798);
+                                            searchTrafficMapFragment.setArguments(bundle);
+                                            fragmentTransaction.replace(R.id.traffic_map, searchTrafficMapFragment);
                                         }
                                     }
 
@@ -1965,6 +2471,12 @@ public class SearchActivity extends AppCompatActivity {
 
                                 find_weather("Changwon");
                                 temp_div.setVisibility(View.VISIBLE);
+
+                                bundle.putDouble("search_Latitude", 35.254850);
+                                bundle.putDouble("search_Longitude", 128.645197);
+                                searchTrafficMapFragment.setArguments(bundle);
+                                fragmentTransaction.replace(R.id.traffic_map, searchTrafficMapFragment);
+
                                 spinner3.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                                     @Override
                                     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
@@ -1972,6 +2484,11 @@ public class SearchActivity extends AppCompatActivity {
                                         if(adspin3.getItem(position).equals("내서읍")) {
                                             find_weather("Naeso");
                                             temp_div.setVisibility(View.VISIBLE);
+
+                                            bundle.putDouble("search_Latitude", 35.246330);
+                                            bundle.putDouble("search_Longitude", 128.507312);
+                                            searchTrafficMapFragment.setArguments(bundle);
+                                            fragmentTransaction.replace(R.id.traffic_map, searchTrafficMapFragment);
                                         }
                                     }
 
@@ -1988,6 +2505,12 @@ public class SearchActivity extends AppCompatActivity {
 
                                 find_weather("Masan");
                                 temp_div.setVisibility(View.VISIBLE);
+
+                                bundle.putDouble("search_Latitude", 35.214707);
+                                bundle.putDouble("search_Longitude", 128.581347);
+                                searchTrafficMapFragment.setArguments(bundle);
+                                fragmentTransaction.replace(R.id.traffic_map, searchTrafficMapFragment);
+
                                 spinner3.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                                     @Override
                                     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
@@ -2007,6 +2530,12 @@ public class SearchActivity extends AppCompatActivity {
 
                                 find_weather("Goseong");
                                 temp_div.setVisibility(View.VISIBLE);
+
+                                bundle.putDouble("search_Latitude", 34.976053);
+                                bundle.putDouble("search_Longitude", 128.322462);
+                                searchTrafficMapFragment.setArguments(bundle);
+                                fragmentTransaction.replace(R.id.traffic_map, searchTrafficMapFragment);
+
                                 spinner3.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                                     @Override
                                     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
@@ -2026,6 +2555,12 @@ public class SearchActivity extends AppCompatActivity {
 
                                 find_weather("Kimhae");
                                 temp_div.setVisibility(View.VISIBLE);
+
+                                bundle.putDouble("search_Latitude", 35.228598);
+                                bundle.putDouble("search_Longitude", 128.865968);
+                                searchTrafficMapFragment.setArguments(bundle);
+                                fragmentTransaction.replace(R.id.traffic_map, searchTrafficMapFragment);
+
                                 spinner3.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                                     @Override
                                     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
@@ -2045,6 +2580,12 @@ public class SearchActivity extends AppCompatActivity {
 
                                 find_weather("Chinju");
                                 temp_div.setVisibility(View.VISIBLE);
+
+                                bundle.putDouble("search_Latitude", 35.196821);
+                                bundle.putDouble("search_Longitude", 128.117845);
+                                searchTrafficMapFragment.setArguments(bundle);
+                                fragmentTransaction.replace(R.id.traffic_map, searchTrafficMapFragment);
+
                                 spinner3.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                                     @Override
                                     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
@@ -2064,6 +2605,12 @@ public class SearchActivity extends AppCompatActivity {
 
                                 find_weather("Chinhae");
                                 temp_div.setVisibility(View.VISIBLE);
+
+                                bundle.putDouble("search_Latitude", 35.132807);
+                                bundle.putDouble("search_Longitude", 128.706819);
+                                searchTrafficMapFragment.setArguments(bundle);
+                                fragmentTransaction.replace(R.id.traffic_map, searchTrafficMapFragment);
+
                                 spinner3.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                                     @Override
                                     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
@@ -2083,6 +2630,12 @@ public class SearchActivity extends AppCompatActivity {
 
                                 find_weather("Changnyeong");
                                 temp_div.setVisibility(View.VISIBLE);
+
+                                bundle.putDouble("search_Latitude", 35.534952);
+                                bundle.putDouble("search_Longitude", 128.500861);
+                                searchTrafficMapFragment.setArguments(bundle);
+                                fragmentTransaction.replace(R.id.traffic_map, searchTrafficMapFragment);
+
                                 spinner3.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                                     @Override
                                     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
@@ -2102,7 +2655,8 @@ public class SearchActivity extends AppCompatActivity {
 
                         }
                     });
-                } else if (adspin1.getItem(position).equals("경상북도")) {
+                }
+                else if (adspin1.getItem(position).equals("경상북도")) {
                     choice_do = "경상북도";
                     adspin2 = ArrayAdapter.createFromResource(SearchActivity.this, R.array.경상북도, android.R.layout.simple_spinner_dropdown_item);
                     adspin2.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -2121,12 +2675,20 @@ public class SearchActivity extends AppCompatActivity {
                                     @Override
                                     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                                         choice_se = adspin3.getItem(position).toString();
-                                        if(adspin3.getItem(position).equals("흥해읍")) {
+                                        if (adspin3.getItem(position).equals("흥해읍")) {
                                             find_weather("Heung-hai");
                                             temp_div.setVisibility(View.VISIBLE);
-                                        } else if(adspin3.getItem(position).equals("연일읍")) {
+                                            bundle.putDouble("search_Latitude", 36.107004);
+                                            bundle.putDouble("search_Longitude", 129.342592);
+                                            searchTrafficMapFragment.setArguments(bundle);
+                                            fragmentTransaction.replace(R.id.traffic_map, searchTrafficMapFragment);
+                                        } else if (adspin3.getItem(position).equals("연일읍")) {
                                             find_weather("Enjitsu");
                                             temp_div.setVisibility(View.VISIBLE);
+                                            bundle.putDouble("search_Latitude", 35.992192);
+                                            bundle.putDouble("search_Longitude", 129.343832);
+                                            searchTrafficMapFragment.setArguments(bundle);
+                                            fragmentTransaction.replace(R.id.traffic_map, searchTrafficMapFragment);
                                         }
                                     }
 
@@ -2145,9 +2707,13 @@ public class SearchActivity extends AppCompatActivity {
                                     @Override
                                     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                                         choice_se = adspin3.getItem(position).toString();
-                                        if(adspin3.getItem(position).equals("왜관읍")) {
+                                        if (adspin3.getItem(position).equals("왜관읍")) {
                                             find_weather("Waegwan");
                                             temp_div.setVisibility(View.VISIBLE);
+                                            bundle.putDouble("search_Latitude", 35.988651);
+                                            bundle.putDouble("search_Longitude", 128.398968);
+                                            searchTrafficMapFragment.setArguments(bundle);
+                                            fragmentTransaction.replace(R.id.traffic_map, searchTrafficMapFragment);
                                         }
                                     }
 
@@ -2166,9 +2732,13 @@ public class SearchActivity extends AppCompatActivity {
                                     @Override
                                     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                                         choice_se = adspin3.getItem(position).toString();
-                                        if(adspin3.getItem(position).equals("하양읍")) {
+                                        if (adspin3.getItem(position).equals("하양읍")) {
                                             find_weather("Hayang");
                                             temp_div.setVisibility(View.VISIBLE);
+                                            bundle.putDouble("search_Latitude", 35.912583);
+                                            bundle.putDouble("search_Longitude", 128.818827);
+                                            searchTrafficMapFragment.setArguments(bundle);
+                                            fragmentTransaction.replace(R.id.traffic_map, searchTrafficMapFragment);
                                         }
                                     }
 
@@ -2185,6 +2755,12 @@ public class SearchActivity extends AppCompatActivity {
 
                                 find_weather("Sangju");
                                 temp_div.setVisibility(View.VISIBLE);
+
+                                bundle.putDouble("search_Latitude", 36.413513);
+                                bundle.putDouble("search_Longitude", 128.159047);
+                                searchTrafficMapFragment.setArguments(bundle);
+                                fragmentTransaction.replace(R.id.traffic_map, searchTrafficMapFragment);
+
                                 spinner3.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                                     @Override
                                     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
@@ -2204,6 +2780,12 @@ public class SearchActivity extends AppCompatActivity {
 
                                 find_weather("Mungyeong");
                                 temp_div.setVisibility(View.VISIBLE);
+
+                                bundle.putDouble("search_Latitude", 36.592048);
+                                bundle.putDouble("search_Longitude", 128.193884);
+                                searchTrafficMapFragment.setArguments(bundle);
+                                fragmentTransaction.replace(R.id.traffic_map, searchTrafficMapFragment);
+
                                 spinner3.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                                     @Override
                                     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
@@ -2223,6 +2805,12 @@ public class SearchActivity extends AppCompatActivity {
 
                                 find_weather("Kyonju");
                                 temp_div.setVisibility(View.VISIBLE);
+
+                                bundle.putDouble("search_Latitude", 35.839059);
+                                bundle.putDouble("search_Longitude", 129.201941);
+                                searchTrafficMapFragment.setArguments(bundle);
+                                fragmentTransaction.replace(R.id.traffic_map, searchTrafficMapFragment);
+
                                 spinner3.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                                     @Override
                                     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
@@ -2242,6 +2830,12 @@ public class SearchActivity extends AppCompatActivity {
 
                                 find_weather("Kunwi");
                                 temp_div.setVisibility(View.VISIBLE);
+
+                                bundle.putDouble("search_Latitude", 36.239654);
+                                bundle.putDouble("search_Longitude", 128.570714);
+                                searchTrafficMapFragment.setArguments(bundle);
+                                fragmentTransaction.replace(R.id.traffic_map, searchTrafficMapFragment);
+
                                 spinner3.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                                     @Override
                                     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
@@ -2261,6 +2855,12 @@ public class SearchActivity extends AppCompatActivity {
 
                                 find_weather("Kumi");
                                 temp_div.setVisibility(View.VISIBLE);
+
+                                bundle.putDouble("search_Latitude", 36.115211);
+                                bundle.putDouble("search_Longitude", 128.343100);
+                                searchTrafficMapFragment.setArguments(bundle);
+                                fragmentTransaction.replace(R.id.traffic_map, searchTrafficMapFragment);
+
                                 spinner3.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                                     @Override
                                     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
@@ -2280,6 +2880,12 @@ public class SearchActivity extends AppCompatActivity {
 
                                 find_weather("Gimcheon");
                                 temp_div.setVisibility(View.VISIBLE);
+
+                                bundle.putDouble("search_Latitude", 36.126649);
+                                bundle.putDouble("search_Longitude", 128.099609);
+                                searchTrafficMapFragment.setArguments(bundle);
+                                fragmentTransaction.replace(R.id.traffic_map, searchTrafficMapFragment);
+
                                 spinner3.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                                     @Override
                                     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
@@ -2299,6 +2905,12 @@ public class SearchActivity extends AppCompatActivity {
 
                                 find_weather("Cheongsong gun");
                                 temp_div.setVisibility(View.VISIBLE);
+
+                                bundle.putDouble("search_Latitude", 36.352967);
+                                bundle.putDouble("search_Longitude", 129.059221);
+                                searchTrafficMapFragment.setArguments(bundle);
+                                fragmentTransaction.replace(R.id.traffic_map, searchTrafficMapFragment);
+
                                 spinner3.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                                     @Override
                                     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
@@ -2318,6 +2930,12 @@ public class SearchActivity extends AppCompatActivity {
 
                                 find_weather("Andong");
                                 temp_div.setVisibility(View.VISIBLE);
+
+                                bundle.putDouble("search_Latitude", 36.564766);
+                                bundle.putDouble("search_Longitude", 128.720191);
+                                searchTrafficMapFragment.setArguments(bundle);
+                                fragmentTransaction.replace(R.id.traffic_map, searchTrafficMapFragment);
+
                                 spinner3.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                                     @Override
                                     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
@@ -2353,7 +2971,6 @@ public class SearchActivity extends AppCompatActivity {
         switch (item.getItemId()) {
             case android.R.id.home: {
                 //뒤로가기 버튼 클릭시
-                fragmentTransaction.remove(searchTrafficMapFragment).commit();
                 finish();
                 return true;
             }

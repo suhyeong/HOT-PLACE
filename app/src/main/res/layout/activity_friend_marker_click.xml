@@ -40,7 +40,7 @@
             android:padding="30dp"
             android:scrollbars="vertical"
             android:scrollHorizontally="false"
-            sl:scale_height="850"
+            sl:scale_height="750"
             sl:scale_textsize="50"
             sl:scale_top="155"
             sl:scale_width="1080" />
@@ -51,10 +51,10 @@
             android:layout_height="wrap_content"
             android:text="@null"
             android:gravity="right"
-            sl:scale_top="1030"
+            sl:scale_top="930"
             sl:scale_width="1000"
             sl:scale_height="70"
-            sl:scale_textsize="45"
+            sl:scale_textsize="40"
             sl:scale_left="50"/>
 
         <ImageView
@@ -62,7 +62,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
-            sl:scale_top="1150"
+            sl:scale_top="1050"
             sl:scale_width="1080"
             sl:scale_height="450"/>
 

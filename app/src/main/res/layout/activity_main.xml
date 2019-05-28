@@ -34,7 +34,7 @@
                 android:text=""
                 sl:scale_width="1080"
                 sl:scale_height="160"
-                sl:scale_textsize="47"/>
+                sl:scale_textsize="43"/>
 
             <fragment
                 android:id="@+id/map"

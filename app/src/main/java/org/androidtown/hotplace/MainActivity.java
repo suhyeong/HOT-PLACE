@@ -248,15 +248,25 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     //액션바 메뉴 선택시
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
+        //share icon selected : click event for share item
         switch (item.getItemId()) {
-            case R.id.share:
-                //share icon selected : click event for share item
-                Toast.makeText(this, "share", Toast.LENGTH_SHORT).show();
-                return true;
-            default:
-                //do nothing
-                return super.onOptionsItemSelected(item);
+            case R.id.share_kakao:
+                Toast.makeText(this, "share for kakao", Toast.LENGTH_SHORT).show();
+                break;
+            case R.id.share_line:
+                Toast.makeText(this, "share for line", Toast.LENGTH_SHORT).show();
+                break;
+            case R.id.share_facebook:
+                Toast.makeText(this, "share for facebook", Toast.LENGTH_SHORT).show();
+                break;
+            case R.id.share_twitter:
+                Toast.makeText(this, "share for twitter", Toast.LENGTH_SHORT).show();
+                break;
+            case R.id.share_instagram:
+                Toast.makeText(this, "share for instagram", Toast.LENGTH_SHORT).show();
+                break;
         }
+        return super.onOptionsItemSelected(item);
     }
 
     //네비게이션 드로어 오픈하여 메뉴 선택 시
@@ -388,48 +398,50 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 if(dataSnapshot.getChildrenCount() > 0) {
                     for(DataSnapshot friendSnapshot : dataSnapshot.getChildren()) {
                         final String friend_uid = friendSnapshot.getValue().toString();
-                        database.getInstance().getReference("Memo").child(friend_uid).addValueEventListener(new ValueEventListener() {
-                            @Override
-                            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                                if(dataSnapshot.getChildrenCount() > 0) {
-                                    for(DataSnapshot friend_memo_Snapshot : dataSnapshot.getChildren()) {
-                                        Memo_ memo = friend_memo_Snapshot.getValue(Memo_.class);
-                                        memo_date_for_save = memo.date;
-                                        memo_date_yyyymmdd = memo_date_for_save.substring(0,8);
-                                        memo_date_hh = memo_date_for_save.substring(9,11);
-                                        memo_date_mm = memo_date_for_save.substring(11,13);
-                                        memo_latitude = memo.location_Latitude;
-                                        memo_longitude = memo.location_Longitude;
-                                        final LatLng friend_position = new LatLng(memo_latitude, memo_longitude);
-                                        if(TodayDate().equals(memo_date_yyyymmdd)) { //오늘 올라온 메모만 표시
-                                            database.getInstance().getReference("user_info").child(friend_uid).addValueEventListener(new ValueEventListener() {
-                                                @Override
-                                                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                                                    User friend_get = dataSnapshot.getValue(User.class);
-                                                    User_UID friend_uid_class = new User_UID();
-                                                    friend_uid_class.userUID = friend_uid;
-                                                    friend_maker_title = friend_get.userName + "님께서 " + memo_date_hh + "시" + memo_date_mm + "분에 메모를 올렸습니다!";
-                                                    Marker marker = mMap.addMarker(new MarkerOptions()
-                                                            .position(friend_position)
-                                                            .title(friend_maker_title));
-                                                    marker.setTag(friend_uid_class.userUID);
-                                                }
+                        database.getInstance().getReference("user_info").child(friend_uid).addValueEventListener(new ValueEventListener() {
+                             @Override
+                             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                                 final User friend_get = dataSnapshot.getValue(User.class);
+                                 final User_UID friend_uid_class = new User_UID();
+                                 friend_uid_class.userUID = friend_uid;
+                                 database.getInstance().getReference("Memo").child(friend_uid).addValueEventListener(new ValueEventListener() {
+                                     @Override
+                                     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                                         if(dataSnapshot.getChildrenCount() > 0) {
+                                             for(DataSnapshot friend_memo_Snapshot : dataSnapshot.getChildren()) {
+                                                 Memo_ memo = friend_memo_Snapshot.getValue(Memo_.class);
+                                                 memo_date_for_save = memo.date;
+                                                 memo_date_yyyymmdd = memo_date_for_save.substring(0,8);
+                                                 memo_date_hh = memo_date_for_save.substring(9,11);
+                                                 memo_date_mm = memo_date_for_save.substring(11,13);
+                                                 memo_latitude = memo.location_Latitude;
+                                                 memo_longitude = memo.location_Longitude;
+                                                 final LatLng friend_position = new LatLng(memo_latitude, memo_longitude);
+                                                 if(TodayDate().equals(memo_date_yyyymmdd)) { //오늘 올라온 메모만 표시
+                                                     friend_maker_title = friend_get.userName + "님께서 " + memo_date_hh + "시" + memo_date_mm + "분에 메모를 올렸습니다!";
+                                                     if(friend_get.userLocationOpenRange == true) {
+                                                         Marker marker = mMap.addMarker(new MarkerOptions()
+                                                                 .position(friend_position)
+                                                                 .title(friend_maker_title));
+                                                         marker.setTag(friend_uid_class.userUID);
+                                                     }
+                                                 }
+                                             }
+                                         }
+                                     }
 
-                                                @Override
-                                                public void onCancelled(@NonNull DatabaseError databaseError) {
-                                                    databaseError.getMessage();
-                                                }
-                                            });
-                                        }
-                                    }
-                                }
-                            }
+                                     @Override
+                                     public void onCancelled(@NonNull DatabaseError databaseError) {
+                                        databaseError.getMessage();
+                                     }
+                                 });
+                             }
 
-                            @Override
-                            public void onCancelled(@NonNull DatabaseError databaseError) {
+                             @Override
+                             public void onCancelled(@NonNull DatabaseError databaseError) {
                                 databaseError.getMessage();
-                            }
-                        });
+                             }
+                         });
                     }
                 }
             }

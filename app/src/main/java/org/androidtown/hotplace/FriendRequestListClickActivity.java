@@ -11,6 +11,7 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -54,11 +55,9 @@ public class FriendRequestListClickActivity extends AppCompatActivity {
     private int request_friend_profile;
     private int request_friend_memo_open_range;
 
-    private String memo_info;
     private String memo_contents;
     private String memo_date;
-    private String memo_photo_exist_str;
-    private int memo_photo_exist_int;
+    private String memo_date_for_save;
 
     private long user_friends_num;
     private long friend_friends_num;
@@ -80,9 +79,11 @@ public class FriendRequestListClickActivity extends AppCompatActivity {
         friend_name_textview = (TextView) findViewById(R.id.request_friend_name_text);
         friend_email_textview = (TextView) findViewById(R.id.request_friend_email_text);
         friend_birth_textview = (TextView) findViewById(R.id.request_friend_birth_text);
+
         friend_memo_not_open = (TextView) findViewById(R.id.request_friend_memo_not_open);
         friend_memo_friend_open = (TextView) findViewById(R.id.request_friend_memo_friend_open);
         friend_memo_count = (TextView) findViewById(R.id.request_friend_memo_count);
+
         friend_memo_count.setVisibility(View.GONE);
         friend_memo_friend_open.setVisibility(View.GONE);
         friend_memo_not_open.setVisibility(View.GONE);
@@ -95,6 +96,7 @@ public class FriendRequestListClickActivity extends AppCompatActivity {
         request_friend_info = intent.getStringExtra("request friend uid & num");
         request_friend_uid = request_friend_info.substring(0, request_friend_info.indexOf(","));
         request_friend_num = request_friend_info.substring(request_friend_info.indexOf(",")+1, request_friend_info.length());
+
 
         database.getInstance().getReference("user_info").child(request_friend_uid).addValueEventListener(new ValueEventListener() {
             @Override
@@ -157,7 +159,7 @@ public class FriendRequestListClickActivity extends AppCompatActivity {
 
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
-
+                databaseError.getMessage();
             }
         });
     }
@@ -224,16 +226,18 @@ public class FriendRequestListClickActivity extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 adapter.clear();
-                if(dataSnapshot.getChildrenCount() == 0)
+                if(dataSnapshot.getChildrenCount() == 0) {
                     friend_memo_count.setVisibility(View.VISIBLE);
+                    listView.setVisibility(View.GONE);
+                }
                 for(DataSnapshot memoSnapshot : dataSnapshot.getChildren()) {
-                    memo_info = memoSnapshot.getValue().toString();
-                    memo_date = memo_info.substring(6,19);
-                    memo_contents = memo_info.substring(30,memo_info.lastIndexOf(','));
-                    memo_photo_exist_str = memo_info.substring(memo_info.lastIndexOf('=')+1, memo_info.lastIndexOf('}'));
-                    memo_photo_exist_int = Integer.parseInt(memo_photo_exist_str);
-                    memo_date = memo_date.substring(0,4)+"."+memo_date.substring(4,6)+"."+memo_date.substring(6,8)+" "+memo_date.substring(9,11)+":"+memo_date.substring(11,13);
-                    Array.add(memo_photo_exist_int + "\n" + memo_date + "\n" + memo_contents);
+                    Memo_ memo = memoSnapshot.getValue(Memo_.class);
+                    memo_date_for_save = memo.date;
+                    memo_contents = memo.contents;
+
+                    memo_date = memo_date_for_save.substring(0,4)+"."+memo_date_for_save.substring(4,6)+"."+memo_date_for_save.substring(6,8)+" "
+                            +memo_date_for_save.substring(9,11)+":"+memo_date_for_save.substring(11,13);
+                    Array.add(request_friend_uid+","+memo_date_for_save);
                     adapter.add(memo_date + "\n" + memo_contents);
                 }
                 adapter.notifyDataSetChanged();
@@ -242,7 +246,16 @@ public class FriendRequestListClickActivity extends AppCompatActivity {
 
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
+                databaseError.getMessage();
+            }
+        });
 
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Intent intent = new Intent(getApplicationContext(), RequestFriendMemoClickActivity.class);
+                intent.putExtra("request friend memo info", String.valueOf(Array.get(position)));
+                startActivity(intent);
             }
         });
     }
