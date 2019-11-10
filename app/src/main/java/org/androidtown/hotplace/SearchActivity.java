@@ -1,5 +1,6 @@
 package org.androidtown.hotplace;
 
+import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
@@ -38,7 +39,11 @@ public class SearchActivity extends AppCompatActivity {
     FragmentManager fragmentManager;
     FragmentTransaction fragmentTransaction;
     SearchTrafficMapFragment searchTrafficMapFragment;
+
     Bundle bundle;
+    Spinner spinner;
+    Spinner spinner2;
+    Spinner spinner3;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,11 +61,11 @@ public class SearchActivity extends AppCompatActivity {
         temp_div = (TextView) findViewById(R.id.search_maxmintemp_div);
         temp_div.setVisibility(View.INVISIBLE);
 
-        final Spinner spinner = (Spinner) findViewById(R.id.spinner);
+        spinner = findViewById(R.id.spinner);
         spinner.setSelection(0);
-        final Spinner spinner2 = (Spinner) findViewById(R.id.spinner2);
+        spinner2 = findViewById(R.id.spinner2);
         spinner2.setSelection(0);
-        final Spinner spinner3 = (Spinner) findViewById(R.id.spinner3);
+        spinner3 = findViewById(R.id.spinner3);
         spinner3.setSelection(0);
 
         adspin1 = ArrayAdapter.createFromResource(this, R.array.광역자치단체, android.R.layout.simple_spinner_dropdown_item);
@@ -75,7 +80,6 @@ public class SearchActivity extends AppCompatActivity {
                 fragmentManager = getSupportFragmentManager();
                 fragmentTransaction = fragmentManager.beginTransaction();
                 bundle = new Bundle();
-                //fragmentTransaction.commit();
 
                 if (adspin1.getItem(position).equals("서울특별시")) {
                     choice_do = "서울특별시";
@@ -98,8 +102,7 @@ public class SearchActivity extends AppCompatActivity {
                                 bundle.putDouble("search_Latitude", 37.560067);
                                 bundle.putDouble("search_Longitude", 126.822551);
                                 searchTrafficMapFragment.setArguments(bundle);
-                                fragmentTransaction.replace(R.id.traffic_map, searchTrafficMapFragment);
-                                fragmentTransaction.commit();
+                                fragmentTransaction.replace(R.id.traffic_map, searchTrafficMapFragment).commitAllowingStateLoss();
 
                                 spinner3.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                                     @Override
@@ -142,8 +145,7 @@ public class SearchActivity extends AppCompatActivity {
                                 bundle.putDouble("search_Latitude", 35.263681);
                                 bundle.putDouble("search_Longitude", 129.224700);
                                 searchTrafficMapFragment.setArguments(bundle);
-                                fragmentTransaction.replace(R.id.traffic_map, searchTrafficMapFragment);
-                                fragmentTransaction.commit();
+                                fragmentTransaction.replace(R.id.traffic_map, searchTrafficMapFragment).commitAllowingStateLoss();
 
                                 spinner3.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                                     @Override
@@ -186,7 +188,7 @@ public class SearchActivity extends AppCompatActivity {
                                 bundle.putDouble("search_Latitude", 35.135154);
                                 bundle.putDouble("search_Longitude", 126.788463);
                                 searchTrafficMapFragment.setArguments(bundle);
-                                fragmentTransaction.replace(R.id.traffic_map, searchTrafficMapFragment);
+                                fragmentTransaction.replace(R.id.traffic_map, searchTrafficMapFragment).commitAllowingStateLoss();
 
                                 spinner3.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                                     @Override
@@ -229,7 +231,7 @@ public class SearchActivity extends AppCompatActivity {
                                 bundle.putDouble("search_Latitude", 35.829183);
                                 bundle.putDouble("search_Longitude", 128.529102);
                                 searchTrafficMapFragment.setArguments(bundle);
-                                fragmentTransaction.replace(R.id.traffic_map, searchTrafficMapFragment);
+                                fragmentTransaction.replace(R.id.traffic_map, searchTrafficMapFragment).commitAllowingStateLoss();
 
                                 spinner3.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                                     @Override
@@ -272,7 +274,7 @@ public class SearchActivity extends AppCompatActivity {
                                 bundle.putDouble("search_Latitude", 36.340588);
                                 bundle.putDouble("search_Longitude", 127.380601);
                                 searchTrafficMapFragment.setArguments(bundle);
-                                fragmentTransaction.replace(R.id.traffic_map, searchTrafficMapFragment);
+                                fragmentTransaction.replace(R.id.traffic_map, searchTrafficMapFragment).commitAllowingStateLoss();
 
                                 spinner3.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                                     @Override
@@ -315,7 +317,7 @@ public class SearchActivity extends AppCompatActivity {
                                 bundle.putDouble("search_Latitude", 35.431162);
                                 bundle.putDouble("search_Longitude", 129.340414);
                                 searchTrafficMapFragment.setArguments(bundle);
-                                fragmentTransaction.replace(R.id.traffic_map, searchTrafficMapFragment);
+                                fragmentTransaction.replace(R.id.traffic_map, searchTrafficMapFragment).commitAllowingStateLoss();
 
                                 spinner3.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                                     @Override
@@ -358,7 +360,7 @@ public class SearchActivity extends AppCompatActivity {
                                 bundle.putDouble("search_Latitude", 37.709357);
                                 bundle.putDouble("search_Longitude", 126.452580);
                                 searchTrafficMapFragment.setArguments(bundle);
-                                fragmentTransaction.replace(R.id.traffic_map, searchTrafficMapFragment);
+                                fragmentTransaction.replace(R.id.traffic_map, searchTrafficMapFragment).commitAllowingStateLoss();
 
                                 spinner3.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                                     @Override
@@ -406,7 +408,7 @@ public class SearchActivity extends AppCompatActivity {
                                             bundle.putDouble("search_Latitude", 33.455305);
                                             bundle.putDouble("search_Longitude", 126.326646);
                                             searchTrafficMapFragment.setArguments(bundle);
-                                            fragmentTransaction.replace(R.id.traffic_map, searchTrafficMapFragment);
+                                            fragmentTransaction.replace(R.id.traffic_map, searchTrafficMapFragment).commitAllowingStateLoss();
                                         }
                                     }
 
@@ -450,7 +452,7 @@ public class SearchActivity extends AppCompatActivity {
                                             bundle.putDouble("search_Latitude", 37.861703);
                                             bundle.putDouble("search_Longitude", 126.788306);
                                             searchTrafficMapFragment.setArguments(bundle);
-                                            fragmentTransaction.replace(R.id.traffic_map, searchTrafficMapFragment);
+                                            fragmentTransaction.replace(R.id.traffic_map, searchTrafficMapFragment).commitAllowingStateLoss();
                                         }
                                     }
 
@@ -476,7 +478,7 @@ public class SearchActivity extends AppCompatActivity {
                                             bundle.putDouble("search_Latitude", 37.991188);
                                             bundle.putDouble("search_Longitude", 127.188818);
                                             searchTrafficMapFragment.setArguments(bundle);
-                                            fragmentTransaction.replace(R.id.traffic_map, searchTrafficMapFragment);
+                                            fragmentTransaction.replace(R.id.traffic_map, searchTrafficMapFragment).commitAllowingStateLoss();
                                         }
                                     }
 
@@ -502,7 +504,7 @@ public class SearchActivity extends AppCompatActivity {
                                             bundle.putDouble("search_Latitude", 37.283160);
                                             bundle.putDouble("search_Longitude", 127.488413);
                                             searchTrafficMapFragment.setArguments(bundle);
-                                            fragmentTransaction.replace(R.id.traffic_map, searchTrafficMapFragment);
+                                            fragmentTransaction.replace(R.id.traffic_map, searchTrafficMapFragment).commitAllowingStateLoss();
                                         }
                                     }
 
@@ -528,7 +530,7 @@ public class SearchActivity extends AppCompatActivity {
                                             bundle.putDouble("search_Latitude", 37.651298);
                                             bundle.putDouble("search_Longitude", 127.306880);
                                             searchTrafficMapFragment.setArguments(bundle);
-                                            fragmentTransaction.replace(R.id.traffic_map, searchTrafficMapFragment);
+                                            fragmentTransaction.replace(R.id.traffic_map, searchTrafficMapFragment).commitAllowingStateLoss();
                                         }
                                         else if(adspin3.getItem(position).equals("와부읍")) {
                                             find_weather("Wabu");
@@ -537,7 +539,7 @@ public class SearchActivity extends AppCompatActivity {
                                             bundle.putDouble("search_Latitude", 37.587337);
                                             bundle.putDouble("search_Longitude", 127.217767);
                                             searchTrafficMapFragment.setArguments(bundle);
-                                            fragmentTransaction.replace(R.id.traffic_map, searchTrafficMapFragment);
+                                            fragmentTransaction.replace(R.id.traffic_map, searchTrafficMapFragment).commitAllowingStateLoss();
                                         }
                                     }
 
@@ -563,7 +565,7 @@ public class SearchActivity extends AppCompatActivity {
                                             bundle.putDouble("search_Latitude", 37.357712);
                                             bundle.putDouble("search_Longitude", 127.424199);
                                             searchTrafficMapFragment.setArguments(bundle);
-                                            fragmentTransaction.replace(R.id.traffic_map, searchTrafficMapFragment);
+                                            fragmentTransaction.replace(R.id.traffic_map, searchTrafficMapFragment).commitAllowingStateLoss();
                                         }
                                     }
 
@@ -584,7 +586,7 @@ public class SearchActivity extends AppCompatActivity {
                                 bundle.putDouble("search_Latitude", 38.099412);
                                 bundle.putDouble("search_Longitude", 127.068874);
                                 searchTrafficMapFragment.setArguments(bundle);
-                                fragmentTransaction.replace(R.id.traffic_map, searchTrafficMapFragment);
+                                fragmentTransaction.replace(R.id.traffic_map, searchTrafficMapFragment).commitAllowingStateLoss();
 
                                 spinner3.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                                     @Override
@@ -609,7 +611,7 @@ public class SearchActivity extends AppCompatActivity {
                                 bundle.putDouble("search_Latitude", 37.296487);
                                 bundle.putDouble("search_Longitude", 127.617060);
                                 searchTrafficMapFragment.setArguments(bundle);
-                                fragmentTransaction.replace(R.id.traffic_map, searchTrafficMapFragment);
+                                fragmentTransaction.replace(R.id.traffic_map, searchTrafficMapFragment).commitAllowingStateLoss();
 
                                 spinner3.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                                     @Override
@@ -634,7 +636,7 @@ public class SearchActivity extends AppCompatActivity {
                                 bundle.putDouble("search_Latitude", 37.490443);
                                 bundle.putDouble("search_Longitude", 127.494238);
                                 searchTrafficMapFragment.setArguments(bundle);
-                                fragmentTransaction.replace(R.id.traffic_map, searchTrafficMapFragment);
+                                fragmentTransaction.replace(R.id.traffic_map, searchTrafficMapFragment).commitAllowingStateLoss();
 
                                 spinner3.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                                     @Override
@@ -659,7 +661,7 @@ public class SearchActivity extends AppCompatActivity {
                                 bundle.putDouble("search_Latitude", 37.804847);
                                 bundle.putDouble("search_Longitude", 126.997120);
                                 searchTrafficMapFragment.setArguments(bundle);
-                                fragmentTransaction.replace(R.id.traffic_map, searchTrafficMapFragment);
+                                fragmentTransaction.replace(R.id.traffic_map, searchTrafficMapFragment).commitAllowingStateLoss();
 
                                 spinner3.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                                     @Override
@@ -684,7 +686,7 @@ public class SearchActivity extends AppCompatActivity {
                                 bundle.putDouble("search_Latitude", 37.736938);
                                 bundle.putDouble("search_Longitude", 127.058781);
                                 searchTrafficMapFragment.setArguments(bundle);
-                                fragmentTransaction.replace(R.id.traffic_map, searchTrafficMapFragment);
+                                fragmentTransaction.replace(R.id.traffic_map, searchTrafficMapFragment).commitAllowingStateLoss();
 
                                 spinner3.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                                     @Override
@@ -709,7 +711,7 @@ public class SearchActivity extends AppCompatActivity {
                                 bundle.putDouble("search_Latitude", 37.280661);
                                 bundle.putDouble("search_Longitude", 127.007488);
                                 searchTrafficMapFragment.setArguments(bundle);
-                                fragmentTransaction.replace(R.id.traffic_map, searchTrafficMapFragment);
+                                fragmentTransaction.replace(R.id.traffic_map, searchTrafficMapFragment).commitAllowingStateLoss();
 
                                 spinner3.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                                     @Override
@@ -734,7 +736,7 @@ public class SearchActivity extends AppCompatActivity {
                                 bundle.putDouble("search_Latitude", 37.503980);
                                 bundle.putDouble("search_Longitude", 126.785688);
                                 searchTrafficMapFragment.setArguments(bundle);
-                                fragmentTransaction.replace(R.id.traffic_map, searchTrafficMapFragment);
+                                fragmentTransaction.replace(R.id.traffic_map, searchTrafficMapFragment).commitAllowingStateLoss();
 
                                 spinner3.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                                     @Override
@@ -759,7 +761,7 @@ public class SearchActivity extends AppCompatActivity {
                                 bundle.putDouble("search_Latitude", 37.161845);
                                 bundle.putDouble("search_Longitude", 127.051822);
                                 searchTrafficMapFragment.setArguments(bundle);
-                                fragmentTransaction.replace(R.id.traffic_map, searchTrafficMapFragment);
+                                fragmentTransaction.replace(R.id.traffic_map, searchTrafficMapFragment).commitAllowingStateLoss();
 
                                 spinner3.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                                     @Override
@@ -784,7 +786,7 @@ public class SearchActivity extends AppCompatActivity {
                                 bundle.putDouble("search_Latitude", 37.597230);
                                 bundle.putDouble("search_Longitude", 127.130928);
                                 searchTrafficMapFragment.setArguments(bundle);
-                                fragmentTransaction.replace(R.id.traffic_map, searchTrafficMapFragment);
+                                fragmentTransaction.replace(R.id.traffic_map, searchTrafficMapFragment).commitAllowingStateLoss();
 
                                 spinner3.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                                     @Override
@@ -809,7 +811,7 @@ public class SearchActivity extends AppCompatActivity {
                                 bundle.putDouble("search_Latitude", 37.660936);
                                 bundle.putDouble("search_Longitude", 126.832317);
                                 searchTrafficMapFragment.setArguments(bundle);
-                                fragmentTransaction.replace(R.id.traffic_map, searchTrafficMapFragment);
+                                fragmentTransaction.replace(R.id.traffic_map, searchTrafficMapFragment).commitAllowingStateLoss();
 
                                 spinner3.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                                     @Override
@@ -834,7 +836,7 @@ public class SearchActivity extends AppCompatActivity {
                                 bundle.putDouble("search_Latitude", 37.825333);
                                 bundle.putDouble("search_Longitude", 127.510952);
                                 searchTrafficMapFragment.setArguments(bundle);
-                                fragmentTransaction.replace(R.id.traffic_map, searchTrafficMapFragment);
+                                fragmentTransaction.replace(R.id.traffic_map, searchTrafficMapFragment).commitAllowingStateLoss();
 
                                 spinner3.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                                     @Override
@@ -859,7 +861,7 @@ public class SearchActivity extends AppCompatActivity {
                                 bundle.putDouble("search_Latitude", 37.209160);
                                 bundle.putDouble("search_Longitude", 127.052128);
                                 searchTrafficMapFragment.setArguments(bundle);
-                                fragmentTransaction.replace(R.id.traffic_map, searchTrafficMapFragment);
+                                fragmentTransaction.replace(R.id.traffic_map, searchTrafficMapFragment).commitAllowingStateLoss();
 
                                 spinner3.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                                     @Override
@@ -884,7 +886,7 @@ public class SearchActivity extends AppCompatActivity {
                                 bundle.putDouble("search_Latitude", 37.401908);
                                 bundle.putDouble("search_Longitude", 126.922459);
                                 searchTrafficMapFragment.setArguments(bundle);
-                                fragmentTransaction.replace(R.id.traffic_map, searchTrafficMapFragment);
+                                fragmentTransaction.replace(R.id.traffic_map, searchTrafficMapFragment).commitAllowingStateLoss();
 
                                 spinner3.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                                     @Override
@@ -909,7 +911,7 @@ public class SearchActivity extends AppCompatActivity {
                                 bundle.putDouble("search_Latitude", 37.011814);
                                 bundle.putDouble("search_Longitude", 127.265906);
                                 searchTrafficMapFragment.setArguments(bundle);
-                                fragmentTransaction.replace(R.id.traffic_map, searchTrafficMapFragment);
+                                fragmentTransaction.replace(R.id.traffic_map, searchTrafficMapFragment).commitAllowingStateLoss();
 
                                 spinner3.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                                     @Override
@@ -934,7 +936,7 @@ public class SearchActivity extends AppCompatActivity {
                                 bundle.putDouble("search_Latitude", 37.321227);
                                 bundle.putDouble("search_Longitude", 126.829690);
                                 searchTrafficMapFragment.setArguments(bundle);
-                                fragmentTransaction.replace(R.id.traffic_map, searchTrafficMapFragment);
+                                fragmentTransaction.replace(R.id.traffic_map, searchTrafficMapFragment).commitAllowingStateLoss();
 
                                 spinner3.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                                     @Override
@@ -959,7 +961,7 @@ public class SearchActivity extends AppCompatActivity {
                                 bundle.putDouble("search_Latitude", 37.404857);
                                 bundle.putDouble("search_Longitude", 127.116232);
                                 searchTrafficMapFragment.setArguments(bundle);
-                                fragmentTransaction.replace(R.id.traffic_map, searchTrafficMapFragment);
+                                fragmentTransaction.replace(R.id.traffic_map, searchTrafficMapFragment).commitAllowingStateLoss();
 
                                 spinner3.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                                     @Override
@@ -984,7 +986,7 @@ public class SearchActivity extends AppCompatActivity {
                                 bundle.putDouble("search_Latitude", 37.541103);
                                 bundle.putDouble("search_Longitude", 127.205237);
                                 searchTrafficMapFragment.setArguments(bundle);
-                                fragmentTransaction.replace(R.id.traffic_map, searchTrafficMapFragment);
+                                fragmentTransaction.replace(R.id.traffic_map, searchTrafficMapFragment).commitAllowingStateLoss();
 
                                 spinner3.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                                     @Override
@@ -1009,7 +1011,7 @@ public class SearchActivity extends AppCompatActivity {
                                 bundle.putDouble("search_Latitude", 37.475438);
                                 bundle.putDouble("search_Longitude", 126.866094);
                                 searchTrafficMapFragment.setArguments(bundle);
-                                fragmentTransaction.replace(R.id.traffic_map, searchTrafficMapFragment);
+                                fragmentTransaction.replace(R.id.traffic_map, searchTrafficMapFragment).commitAllowingStateLoss();
 
                                 spinner3.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                                     @Override
@@ -1052,7 +1054,7 @@ public class SearchActivity extends AppCompatActivity {
                                 bundle.putDouble("search_Latitude", 37.186723);
                                 bundle.putDouble("search_Longitude", 128.465713);
                                 searchTrafficMapFragment.setArguments(bundle);
-                                fragmentTransaction.replace(R.id.traffic_map, searchTrafficMapFragment);
+                                fragmentTransaction.replace(R.id.traffic_map, searchTrafficMapFragment).commitAllowingStateLoss();
 
                                 spinner3.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                                     @Override
@@ -1077,7 +1079,7 @@ public class SearchActivity extends AppCompatActivity {
                                 bundle.putDouble("search_Latitude", 38.106001);
                                 bundle.putDouble("search_Longitude", 127.989075);
                                 searchTrafficMapFragment.setArguments(bundle);
-                                fragmentTransaction.replace(R.id.traffic_map, searchTrafficMapFragment);
+                                fragmentTransaction.replace(R.id.traffic_map, searchTrafficMapFragment).commitAllowingStateLoss();
 
                                 spinner3.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                                     @Override
@@ -1102,7 +1104,7 @@ public class SearchActivity extends AppCompatActivity {
                                 bundle.putDouble("search_Latitude", 37.344178);
                                 bundle.putDouble("search_Longitude", 127.951441);
                                 searchTrafficMapFragment.setArguments(bundle);
-                                fragmentTransaction.replace(R.id.traffic_map, searchTrafficMapFragment);
+                                fragmentTransaction.replace(R.id.traffic_map, searchTrafficMapFragment).commitAllowingStateLoss();
 
                                 spinner3.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                                     @Override
@@ -1127,7 +1129,7 @@ public class SearchActivity extends AppCompatActivity {
                                 bundle.putDouble("search_Latitude", 37.162163);
                                 bundle.putDouble("search_Longitude", 128.987005);
                                 searchTrafficMapFragment.setArguments(bundle);
-                                fragmentTransaction.replace(R.id.traffic_map, searchTrafficMapFragment);
+                                fragmentTransaction.replace(R.id.traffic_map, searchTrafficMapFragment).commitAllowingStateLoss();
 
                                 spinner3.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                                     @Override
@@ -1152,7 +1154,7 @@ public class SearchActivity extends AppCompatActivity {
                                 bundle.putDouble("search_Latitude", 38.206993);
                                 bundle.putDouble("search_Longitude", 128.577170);
                                 searchTrafficMapFragment.setArguments(bundle);
-                                fragmentTransaction.replace(R.id.traffic_map, searchTrafficMapFragment);
+                                fragmentTransaction.replace(R.id.traffic_map, searchTrafficMapFragment).commitAllowingStateLoss();
 
                                 spinner3.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                                     @Override
@@ -1177,7 +1179,7 @@ public class SearchActivity extends AppCompatActivity {
                                 bundle.putDouble("search_Latitude", 37.443957);
                                 bundle.putDouble("search_Longitude", 129.159443);
                                 searchTrafficMapFragment.setArguments(bundle);
-                                fragmentTransaction.replace(R.id.traffic_map, searchTrafficMapFragment);
+                                fragmentTransaction.replace(R.id.traffic_map, searchTrafficMapFragment).commitAllowingStateLoss();
 
                                 spinner3.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                                     @Override
@@ -1202,7 +1204,7 @@ public class SearchActivity extends AppCompatActivity {
                                 bundle.putDouble("search_Latitude", 37.757995);
                                 bundle.putDouble("search_Longitude", 128.891419);
                                 searchTrafficMapFragment.setArguments(bundle);
-                                fragmentTransaction.replace(R.id.traffic_map, searchTrafficMapFragment);
+                                fragmentTransaction.replace(R.id.traffic_map, searchTrafficMapFragment).commitAllowingStateLoss();
 
                                 spinner3.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                                     @Override
@@ -1227,7 +1229,7 @@ public class SearchActivity extends AppCompatActivity {
                                 bundle.putDouble("search_Latitude", 38.105383);
                                 bundle.putDouble("search_Longitude", 127.706252);
                                 searchTrafficMapFragment.setArguments(bundle);
-                                fragmentTransaction.replace(R.id.traffic_map, searchTrafficMapFragment);
+                                fragmentTransaction.replace(R.id.traffic_map, searchTrafficMapFragment).commitAllowingStateLoss();
 
                                 spinner3.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                                     @Override
@@ -1252,7 +1254,7 @@ public class SearchActivity extends AppCompatActivity {
                                 bundle.putDouble("search_Latitude", 37.690009);
                                 bundle.putDouble("search_Longitude", 127.884168);
                                 searchTrafficMapFragment.setArguments(bundle);
-                                fragmentTransaction.replace(R.id.traffic_map, searchTrafficMapFragment);
+                                fragmentTransaction.replace(R.id.traffic_map, searchTrafficMapFragment).commitAllowingStateLoss();
 
                                 spinner3.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                                     @Override
@@ -1277,7 +1279,7 @@ public class SearchActivity extends AppCompatActivity {
                                 bundle.putDouble("search_Latitude", 37.887489);
                                 bundle.putDouble("search_Longitude", 127.738713);
                                 searchTrafficMapFragment.setArguments(bundle);
-                                fragmentTransaction.replace(R.id.traffic_map, searchTrafficMapFragment);
+                                fragmentTransaction.replace(R.id.traffic_map, searchTrafficMapFragment).commitAllowingStateLoss();
 
                                 spinner3.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                                     @Override
@@ -1302,7 +1304,7 @@ public class SearchActivity extends AppCompatActivity {
                                 bundle.putDouble("search_Latitude", 37.522638);
                                 bundle.putDouble("search_Longitude", 129.108875);
                                 searchTrafficMapFragment.setArguments(bundle);
-                                fragmentTransaction.replace(R.id.traffic_map, searchTrafficMapFragment);
+                                fragmentTransaction.replace(R.id.traffic_map, searchTrafficMapFragment).commitAllowingStateLoss();
 
                                 spinner3.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                                     @Override
@@ -1350,7 +1352,7 @@ public class SearchActivity extends AppCompatActivity {
                                             bundle.putDouble("search_Latitude", 36.554720);
                                             bundle.putDouble("search_Longitude", 127.192761);
                                             searchTrafficMapFragment.setArguments(bundle);
-                                            fragmentTransaction.replace(R.id.traffic_map, searchTrafficMapFragment);
+                                            fragmentTransaction.replace(R.id.traffic_map, searchTrafficMapFragment).commitAllowingStateLoss();
                                         }
                                     }
 
@@ -1376,7 +1378,7 @@ public class SearchActivity extends AppCompatActivity {
                                             bundle.putDouble("search_Latitude", 36.143337);
                                             bundle.putDouble("search_Longitude", 127.370681);
                                             searchTrafficMapFragment.setArguments(bundle);
-                                            fragmentTransaction.replace(R.id.traffic_map, searchTrafficMapFragment);
+                                            fragmentTransaction.replace(R.id.traffic_map, searchTrafficMapFragment).commitAllowingStateLoss();
                                         }
                                     }
 
@@ -1402,7 +1404,7 @@ public class SearchActivity extends AppCompatActivity {
                                             bundle.putDouble("search_Latitude", 36.074144);
                                             bundle.putDouble("search_Longitude", 126.761912);
                                             searchTrafficMapFragment.setArguments(bundle);
-                                            fragmentTransaction.replace(R.id.traffic_map, searchTrafficMapFragment);
+                                            fragmentTransaction.replace(R.id.traffic_map, searchTrafficMapFragment).commitAllowingStateLoss();
                                         }
                                     }
 
@@ -1428,7 +1430,7 @@ public class SearchActivity extends AppCompatActivity {
                                             bundle.putDouble("search_Latitude", 36.774336);
                                             bundle.putDouble("search_Longitude", 127.056738);
                                             searchTrafficMapFragment.setArguments(bundle);
-                                            fragmentTransaction.replace(R.id.traffic_map, searchTrafficMapFragment);
+                                            fragmentTransaction.replace(R.id.traffic_map, searchTrafficMapFragment).commitAllowingStateLoss();
                                         }
                                     }
 
@@ -1454,7 +1456,7 @@ public class SearchActivity extends AppCompatActivity {
                                             bundle.putDouble("search_Latitude", 36.125704);
                                             bundle.putDouble("search_Longitude", 127.098282);
                                             searchTrafficMapFragment.setArguments(bundle);
-                                            fragmentTransaction.replace(R.id.traffic_map, searchTrafficMapFragment);
+                                            fragmentTransaction.replace(R.id.traffic_map, searchTrafficMapFragment).commitAllowingStateLoss();
                                         }
                                     }
 
@@ -1475,7 +1477,7 @@ public class SearchActivity extends AppCompatActivity {
                                 bundle.putDouble("search_Latitude", 36.683169);
                                 bundle.putDouble("search_Longitude", 126.839395);
                                 searchTrafficMapFragment.setArguments(bundle);
-                                fragmentTransaction.replace(R.id.traffic_map, searchTrafficMapFragment);
+                                fragmentTransaction.replace(R.id.traffic_map, searchTrafficMapFragment).commitAllowingStateLoss();
 
                                 spinner3.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                                     @Override
@@ -1500,7 +1502,7 @@ public class SearchActivity extends AppCompatActivity {
                                 bundle.putDouble("search_Latitude", 36.905013);
                                 bundle.putDouble("search_Longitude", 126.648212);
                                 searchTrafficMapFragment.setArguments(bundle);
-                                fragmentTransaction.replace(R.id.traffic_map, searchTrafficMapFragment);
+                                fragmentTransaction.replace(R.id.traffic_map, searchTrafficMapFragment).commitAllowingStateLoss();
 
                                 spinner3.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                                     @Override
@@ -1525,7 +1527,7 @@ public class SearchActivity extends AppCompatActivity {
                                 bundle.putDouble("search_Latitude", 36.348698);
                                 bundle.putDouble("search_Longitude", 126.598508);
                                 searchTrafficMapFragment.setArguments(bundle);
-                                fragmentTransaction.replace(R.id.traffic_map, searchTrafficMapFragment);
+                                fragmentTransaction.replace(R.id.traffic_map, searchTrafficMapFragment).commitAllowingStateLoss();
 
                                 spinner3.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                                     @Override
@@ -1550,7 +1552,7 @@ public class SearchActivity extends AppCompatActivity {
                                 bundle.putDouble("search_Latitude", 36.783060);
                                 bundle.putDouble("search_Longitude", 126.450980);
                                 searchTrafficMapFragment.setArguments(bundle);
-                                fragmentTransaction.replace(R.id.traffic_map, searchTrafficMapFragment);
+                                fragmentTransaction.replace(R.id.traffic_map, searchTrafficMapFragment).commitAllowingStateLoss();
 
                                 spinner3.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                                     @Override
@@ -1575,7 +1577,7 @@ public class SearchActivity extends AppCompatActivity {
                                 bundle.putDouble("search_Latitude", 36.275822);
                                 bundle.putDouble("search_Longitude", 126.910506);
                                 searchTrafficMapFragment.setArguments(bundle);
-                                fragmentTransaction.replace(R.id.traffic_map, searchTrafficMapFragment);
+                                fragmentTransaction.replace(R.id.traffic_map, searchTrafficMapFragment).commitAllowingStateLoss();
 
                                 spinner3.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                                     @Override
@@ -1600,7 +1602,7 @@ public class SearchActivity extends AppCompatActivity {
                                 bundle.putDouble("search_Latitude", 36.600776);
                                 bundle.putDouble("search_Longitude", 126.661922);
                                 searchTrafficMapFragment.setArguments(bundle);
-                                fragmentTransaction.replace(R.id.traffic_map, searchTrafficMapFragment);
+                                fragmentTransaction.replace(R.id.traffic_map, searchTrafficMapFragment).commitAllowingStateLoss();
 
                                 spinner3.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                                     @Override
@@ -1643,7 +1645,7 @@ public class SearchActivity extends AppCompatActivity {
                                 bundle.putDouble("search_Latitude", 36.174431);
                                 bundle.putDouble("search_Longitude", 127.779149);
                                 searchTrafficMapFragment.setArguments(bundle);
-                                fragmentTransaction.replace(R.id.traffic_map, searchTrafficMapFragment);
+                                fragmentTransaction.replace(R.id.traffic_map, searchTrafficMapFragment).commitAllowingStateLoss();
 
                                 spinner3.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                                     @Override
@@ -1668,7 +1670,7 @@ public class SearchActivity extends AppCompatActivity {
                                 bundle.putDouble("search_Latitude", 36.306148);
                                 bundle.putDouble("search_Longitude", 127.574824);
                                 searchTrafficMapFragment.setArguments(bundle);
-                                fragmentTransaction.replace(R.id.traffic_map, searchTrafficMapFragment);
+                                fragmentTransaction.replace(R.id.traffic_map, searchTrafficMapFragment).commitAllowingStateLoss();
 
                                 spinner3.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                                     @Override
@@ -1693,7 +1695,7 @@ public class SearchActivity extends AppCompatActivity {
                                 bundle.putDouble("search_Latitude", 36.628943);
                                 bundle.putDouble("search_Longitude", 127.480681);
                                 searchTrafficMapFragment.setArguments(bundle);
-                                fragmentTransaction.replace(R.id.traffic_map, searchTrafficMapFragment);
+                                fragmentTransaction.replace(R.id.traffic_map, searchTrafficMapFragment).commitAllowingStateLoss();
 
                                 spinner3.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                                     @Override
@@ -1718,7 +1720,7 @@ public class SearchActivity extends AppCompatActivity {
                                 bundle.putDouble("search_Latitude", 36.810374);
                                 bundle.putDouble("search_Longitude", 127.790759);
                                 searchTrafficMapFragment.setArguments(bundle);
-                                fragmentTransaction.replace(R.id.traffic_map, searchTrafficMapFragment);
+                                fragmentTransaction.replace(R.id.traffic_map, searchTrafficMapFragment).commitAllowingStateLoss();
 
                                 spinner3.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                                     @Override
@@ -1743,7 +1745,7 @@ public class SearchActivity extends AppCompatActivity {
                                 bundle.putDouble("search_Latitude", 36.858973);
                                 bundle.putDouble("search_Longitude", 127.443160);
                                 searchTrafficMapFragment.setArguments(bundle);
-                                fragmentTransaction.replace(R.id.traffic_map, searchTrafficMapFragment);
+                                fragmentTransaction.replace(R.id.traffic_map, searchTrafficMapFragment).commitAllowingStateLoss();
 
                                 spinner3.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                                     @Override
@@ -1791,7 +1793,7 @@ public class SearchActivity extends AppCompatActivity {
                                             bundle.putDouble("search_Latitude", 34.846574);
                                             bundle.putDouble("search_Longitude", 127.341352);
                                             searchTrafficMapFragment.setArguments(bundle);
-                                            fragmentTransaction.replace(R.id.traffic_map, searchTrafficMapFragment);
+                                            fragmentTransaction.replace(R.id.traffic_map, searchTrafficMapFragment).commitAllowingStateLoss();
                                         }
                                     }
 
@@ -1811,7 +1813,7 @@ public class SearchActivity extends AppCompatActivity {
                                 bundle.putDouble("search_Latitude", 34.571918);
                                 bundle.putDouble("search_Longitude", 126.596354);
                                 searchTrafficMapFragment.setArguments(bundle);
-                                fragmentTransaction.replace(R.id.traffic_map, searchTrafficMapFragment);
+                                fragmentTransaction.replace(R.id.traffic_map, searchTrafficMapFragment).commitAllowingStateLoss();
 
                                 spinner3.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                                     @Override
@@ -1824,7 +1826,7 @@ public class SearchActivity extends AppCompatActivity {
                                             bundle.putDouble("search_Latitude", 34.670997);
                                             bundle.putDouble("search_Longitude", 126.327988);
                                             searchTrafficMapFragment.setArguments(bundle);
-                                            fragmentTransaction.replace(R.id.traffic_map, searchTrafficMapFragment);
+                                            fragmentTransaction.replace(R.id.traffic_map, searchTrafficMapFragment).commitAllowingStateLoss();
                                         }
                                     }
 
@@ -1850,7 +1852,7 @@ public class SearchActivity extends AppCompatActivity {
                                             bundle.putDouble("search_Latitude", 35.247585);
                                             bundle.putDouble("search_Longitude", 127.366503);
                                             searchTrafficMapFragment.setArguments(bundle);
-                                            fragmentTransaction.replace(R.id.traffic_map, searchTrafficMapFragment);
+                                            fragmentTransaction.replace(R.id.traffic_map, searchTrafficMapFragment).commitAllowingStateLoss();
                                         }
                                     }
 
@@ -1871,7 +1873,7 @@ public class SearchActivity extends AppCompatActivity {
                                 bundle.putDouble("search_Latitude", 34.763495);
                                 bundle.putDouble("search_Longitude", 127.660951);
                                 searchTrafficMapFragment.setArguments(bundle);
-                                fragmentTransaction.replace(R.id.traffic_map, searchTrafficMapFragment);
+                                fragmentTransaction.replace(R.id.traffic_map, searchTrafficMapFragment).commitAllowingStateLoss();
 
                                 spinner3.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                                     @Override
@@ -1896,7 +1898,7 @@ public class SearchActivity extends AppCompatActivity {
                                 bundle.putDouble("search_Latitude", 35.275622);
                                 bundle.putDouble("search_Longitude", 126.508938);
                                 searchTrafficMapFragment.setArguments(bundle);
-                                fragmentTransaction.replace(R.id.traffic_map, searchTrafficMapFragment);
+                                fragmentTransaction.replace(R.id.traffic_map, searchTrafficMapFragment).commitAllowingStateLoss();
 
                                 spinner3.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                                     @Override
@@ -1921,7 +1923,7 @@ public class SearchActivity extends AppCompatActivity {
                                 bundle.putDouble("search_Latitude", 34.952792);
                                 bundle.putDouble("search_Longitude", 127.512369);
                                 searchTrafficMapFragment.setArguments(bundle);
-                                fragmentTransaction.replace(R.id.traffic_map, searchTrafficMapFragment);
+                                fragmentTransaction.replace(R.id.traffic_map, searchTrafficMapFragment).commitAllowingStateLoss();
 
                                 spinner3.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                                     @Override
@@ -1946,7 +1948,7 @@ public class SearchActivity extends AppCompatActivity {
                                 bundle.putDouble("search_Latitude", 34.996461);
                                 bundle.putDouble("search_Longitude", 126.722486);
                                 searchTrafficMapFragment.setArguments(bundle);
-                                fragmentTransaction.replace(R.id.traffic_map, searchTrafficMapFragment);
+                                fragmentTransaction.replace(R.id.traffic_map, searchTrafficMapFragment).commitAllowingStateLoss();
 
                                 spinner3.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                                     @Override
@@ -1971,7 +1973,7 @@ public class SearchActivity extends AppCompatActivity {
                                 bundle.putDouble("search_Latitude", 34.810861);
                                 bundle.putDouble("search_Longitude", 126.391310);
                                 searchTrafficMapFragment.setArguments(bundle);
-                                fragmentTransaction.replace(R.id.traffic_map, searchTrafficMapFragment);
+                                fragmentTransaction.replace(R.id.traffic_map, searchTrafficMapFragment).commitAllowingStateLoss();
 
                                 spinner3.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                                     @Override
@@ -1996,7 +1998,7 @@ public class SearchActivity extends AppCompatActivity {
                                 bundle.putDouble("search_Latitude", 34.944218);
                                 bundle.putDouble("search_Longitude", 127.704147);
                                 searchTrafficMapFragment.setArguments(bundle);
-                                fragmentTransaction.replace(R.id.traffic_map, searchTrafficMapFragment);
+                                fragmentTransaction.replace(R.id.traffic_map, searchTrafficMapFragment).commitAllowingStateLoss();
 
                                 spinner3.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                                     @Override
@@ -2021,7 +2023,7 @@ public class SearchActivity extends AppCompatActivity {
                                 bundle.putDouble("search_Latitude", 35.215362);
                                 bundle.putDouble("search_Longitude", 127.473759);
                                 searchTrafficMapFragment.setArguments(bundle);
-                                fragmentTransaction.replace(R.id.traffic_map, searchTrafficMapFragment);
+                                fragmentTransaction.replace(R.id.traffic_map, searchTrafficMapFragment).commitAllowingStateLoss();
 
                                 spinner3.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                                     @Override
@@ -2046,7 +2048,7 @@ public class SearchActivity extends AppCompatActivity {
                                 bundle.putDouble("search_Latitude", 35.020263);
                                 bundle.putDouble("search_Longitude", 127.025586);
                                 searchTrafficMapFragment.setArguments(bundle);
-                                fragmentTransaction.replace(R.id.traffic_map, searchTrafficMapFragment);
+                                fragmentTransaction.replace(R.id.traffic_map, searchTrafficMapFragment).commitAllowingStateLoss();
 
                                 spinner3.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                                     @Override
@@ -2071,7 +2073,7 @@ public class SearchActivity extends AppCompatActivity {
                                 bundle.putDouble("search_Latitude", 34.824799);
                                 bundle.putDouble("search_Longitude", 126.100372);
                                 searchTrafficMapFragment.setArguments(bundle);
-                                fragmentTransaction.replace(R.id.traffic_map, searchTrafficMapFragment);
+                                fragmentTransaction.replace(R.id.traffic_map, searchTrafficMapFragment).commitAllowingStateLoss();
 
                                 spinner3.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                                     @Override
@@ -2114,7 +2116,7 @@ public class SearchActivity extends AppCompatActivity {
                                 bundle.putDouble("search_Latitude", 35.957998);
                                 bundle.putDouble("search_Longitude", 127.133555);
                                 searchTrafficMapFragment.setArguments(bundle);
-                                fragmentTransaction.replace(R.id.traffic_map, searchTrafficMapFragment);
+                                fragmentTransaction.replace(R.id.traffic_map, searchTrafficMapFragment).commitAllowingStateLoss();
 
                                 spinner3.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                                     @Override
@@ -2139,7 +2141,7 @@ public class SearchActivity extends AppCompatActivity {
                                 bundle.putDouble("search_Latitude", 35.726076);
                                 bundle.putDouble("search_Longitude", 126.731682);
                                 searchTrafficMapFragment.setArguments(bundle);
-                                fragmentTransaction.replace(R.id.traffic_map, searchTrafficMapFragment);
+                                fragmentTransaction.replace(R.id.traffic_map, searchTrafficMapFragment).commitAllowingStateLoss();
 
                                 spinner3.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                                     @Override
@@ -2164,7 +2166,7 @@ public class SearchActivity extends AppCompatActivity {
                                 bundle.putDouble("search_Latitude", 35.416036);
                                 bundle.putDouble("search_Longitude", 127.388839);
                                 searchTrafficMapFragment.setArguments(bundle);
-                                fragmentTransaction.replace(R.id.traffic_map, searchTrafficMapFragment);
+                                fragmentTransaction.replace(R.id.traffic_map, searchTrafficMapFragment).commitAllowingStateLoss();
 
                                 spinner3.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                                     @Override
@@ -2189,7 +2191,7 @@ public class SearchActivity extends AppCompatActivity {
                                 bundle.putDouble("search_Latitude", 35.965833);
                                 bundle.putDouble("search_Longitude", 126.730106);
                                 searchTrafficMapFragment.setArguments(bundle);
-                                fragmentTransaction.replace(R.id.traffic_map, searchTrafficMapFragment);
+                                fragmentTransaction.replace(R.id.traffic_map, searchTrafficMapFragment).commitAllowingStateLoss();
 
                                 spinner3.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                                     @Override
@@ -2214,7 +2216,7 @@ public class SearchActivity extends AppCompatActivity {
                                 bundle.putDouble("search_Latitude", 35.432052);
                                 bundle.putDouble("search_Longitude", 126.703029);
                                 searchTrafficMapFragment.setArguments(bundle);
-                                fragmentTransaction.replace(R.id.traffic_map, searchTrafficMapFragment);
+                                fragmentTransaction.replace(R.id.traffic_map, searchTrafficMapFragment).commitAllowingStateLoss();
 
                                 spinner3.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                                     @Override
@@ -2239,7 +2241,7 @@ public class SearchActivity extends AppCompatActivity {
                                 bundle.putDouble("search_Latitude", 35.800520);
                                 bundle.putDouble("search_Longitude", 126.888046);
                                 searchTrafficMapFragment.setArguments(bundle);
-                                fragmentTransaction.replace(R.id.traffic_map, searchTrafficMapFragment);
+                                fragmentTransaction.replace(R.id.traffic_map, searchTrafficMapFragment).commitAllowingStateLoss();
 
                                 spinner3.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                                     @Override
@@ -2264,7 +2266,7 @@ public class SearchActivity extends AppCompatActivity {
                                 bundle.putDouble("search_Latitude", 35.951149);
                                 bundle.putDouble("search_Longitude", 126.972580);
                                 searchTrafficMapFragment.setArguments(bundle);
-                                fragmentTransaction.replace(R.id.traffic_map, searchTrafficMapFragment);
+                                fragmentTransaction.replace(R.id.traffic_map, searchTrafficMapFragment).commitAllowingStateLoss();
 
                                 spinner3.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                                     @Override
@@ -2289,7 +2291,7 @@ public class SearchActivity extends AppCompatActivity {
                                 bundle.putDouble("search_Latitude", 35.577249);
                                 bundle.putDouble("search_Longitude", 127.213319);
                                 searchTrafficMapFragment.setArguments(bundle);
-                                fragmentTransaction.replace(R.id.traffic_map, searchTrafficMapFragment);
+                                fragmentTransaction.replace(R.id.traffic_map, searchTrafficMapFragment).commitAllowingStateLoss();
 
                                 spinner3.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                                     @Override
@@ -2314,7 +2316,7 @@ public class SearchActivity extends AppCompatActivity {
                                 bundle.putDouble("search_Latitude", 35.827024);
                                 bundle.putDouble("search_Longitude", 127.115292);
                                 searchTrafficMapFragment.setArguments(bundle);
-                                fragmentTransaction.replace(R.id.traffic_map, searchTrafficMapFragment);
+                                fragmentTransaction.replace(R.id.traffic_map, searchTrafficMapFragment).commitAllowingStateLoss();
 
                                 spinner3.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                                     @Override
@@ -2339,7 +2341,7 @@ public class SearchActivity extends AppCompatActivity {
                                 bundle.putDouble("search_Latitude", 35.788620);
                                 bundle.putDouble("search_Longitude", 127.425897);
                                 searchTrafficMapFragment.setArguments(bundle);
-                                fragmentTransaction.replace(R.id.traffic_map, searchTrafficMapFragment);
+                                fragmentTransaction.replace(R.id.traffic_map, searchTrafficMapFragment).commitAllowingStateLoss();
 
                                 spinner3.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                                     @Override
@@ -2381,7 +2383,7 @@ public class SearchActivity extends AppCompatActivity {
                                 bundle.putDouble("search_Latitude", 34.893441);
                                 bundle.putDouble("search_Longitude", 128.685118);
                                 searchTrafficMapFragment.setArguments(bundle);
-                                fragmentTransaction.replace(R.id.traffic_map, searchTrafficMapFragment);
+                                fragmentTransaction.replace(R.id.traffic_map, searchTrafficMapFragment).commitAllowingStateLoss();
 
                                 spinner3.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                                     @Override
@@ -2394,7 +2396,7 @@ public class SearchActivity extends AppCompatActivity {
                                             bundle.putDouble("search_Latitude", 34.880638);
                                             bundle.putDouble("search_Longitude", 128.622926);
                                             searchTrafficMapFragment.setArguments(bundle);
-                                            fragmentTransaction.replace(R.id.traffic_map, searchTrafficMapFragment);
+                                            fragmentTransaction.replace(R.id.traffic_map, searchTrafficMapFragment).commitAllowingStateLoss();
                                         }
                                     }
 
@@ -2415,7 +2417,7 @@ public class SearchActivity extends AppCompatActivity {
                                 bundle.putDouble("search_Latitude", 35.484311);
                                 bundle.putDouble("search_Longitude", 128.752201);
                                 searchTrafficMapFragment.setArguments(bundle);
-                                fragmentTransaction.replace(R.id.traffic_map, searchTrafficMapFragment);
+                                fragmentTransaction.replace(R.id.traffic_map, searchTrafficMapFragment).commitAllowingStateLoss();
 
                                 spinner3.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                                     @Override
@@ -2441,7 +2443,7 @@ public class SearchActivity extends AppCompatActivity {
                                 bundle.putDouble("search_Latitude", 35.338691);
                                 bundle.putDouble("search_Longitude", 129.025319);
                                 searchTrafficMapFragment.setArguments(bundle);
-                                fragmentTransaction.replace(R.id.traffic_map, searchTrafficMapFragment);
+                                fragmentTransaction.replace(R.id.traffic_map, searchTrafficMapFragment).commitAllowingStateLoss();
 
                                 spinner3.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                                     @Override
@@ -2454,7 +2456,7 @@ public class SearchActivity extends AppCompatActivity {
                                             bundle.putDouble("search_Latitude", 35.377010);
                                             bundle.putDouble("search_Longitude", 129.147798);
                                             searchTrafficMapFragment.setArguments(bundle);
-                                            fragmentTransaction.replace(R.id.traffic_map, searchTrafficMapFragment);
+                                            fragmentTransaction.replace(R.id.traffic_map, searchTrafficMapFragment).commitAllowingStateLoss();
                                         }
                                     }
 
@@ -2475,7 +2477,7 @@ public class SearchActivity extends AppCompatActivity {
                                 bundle.putDouble("search_Latitude", 35.254850);
                                 bundle.putDouble("search_Longitude", 128.645197);
                                 searchTrafficMapFragment.setArguments(bundle);
-                                fragmentTransaction.replace(R.id.traffic_map, searchTrafficMapFragment);
+                                fragmentTransaction.replace(R.id.traffic_map, searchTrafficMapFragment).commitAllowingStateLoss();
 
                                 spinner3.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                                     @Override
@@ -2488,7 +2490,7 @@ public class SearchActivity extends AppCompatActivity {
                                             bundle.putDouble("search_Latitude", 35.246330);
                                             bundle.putDouble("search_Longitude", 128.507312);
                                             searchTrafficMapFragment.setArguments(bundle);
-                                            fragmentTransaction.replace(R.id.traffic_map, searchTrafficMapFragment);
+                                            fragmentTransaction.replace(R.id.traffic_map, searchTrafficMapFragment).commitAllowingStateLoss();
                                         }
                                     }
 
@@ -2509,7 +2511,7 @@ public class SearchActivity extends AppCompatActivity {
                                 bundle.putDouble("search_Latitude", 35.214707);
                                 bundle.putDouble("search_Longitude", 128.581347);
                                 searchTrafficMapFragment.setArguments(bundle);
-                                fragmentTransaction.replace(R.id.traffic_map, searchTrafficMapFragment);
+                                fragmentTransaction.replace(R.id.traffic_map, searchTrafficMapFragment).commitAllowingStateLoss();
 
                                 spinner3.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                                     @Override
@@ -2534,7 +2536,7 @@ public class SearchActivity extends AppCompatActivity {
                                 bundle.putDouble("search_Latitude", 34.976053);
                                 bundle.putDouble("search_Longitude", 128.322462);
                                 searchTrafficMapFragment.setArguments(bundle);
-                                fragmentTransaction.replace(R.id.traffic_map, searchTrafficMapFragment);
+                                fragmentTransaction.replace(R.id.traffic_map, searchTrafficMapFragment).commitAllowingStateLoss();
 
                                 spinner3.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                                     @Override
@@ -2559,7 +2561,7 @@ public class SearchActivity extends AppCompatActivity {
                                 bundle.putDouble("search_Latitude", 35.228598);
                                 bundle.putDouble("search_Longitude", 128.865968);
                                 searchTrafficMapFragment.setArguments(bundle);
-                                fragmentTransaction.replace(R.id.traffic_map, searchTrafficMapFragment);
+                                fragmentTransaction.replace(R.id.traffic_map, searchTrafficMapFragment).commitAllowingStateLoss();
 
                                 spinner3.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                                     @Override
@@ -2584,7 +2586,7 @@ public class SearchActivity extends AppCompatActivity {
                                 bundle.putDouble("search_Latitude", 35.196821);
                                 bundle.putDouble("search_Longitude", 128.117845);
                                 searchTrafficMapFragment.setArguments(bundle);
-                                fragmentTransaction.replace(R.id.traffic_map, searchTrafficMapFragment);
+                                fragmentTransaction.replace(R.id.traffic_map, searchTrafficMapFragment).commitAllowingStateLoss();
 
                                 spinner3.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                                     @Override
@@ -2609,7 +2611,7 @@ public class SearchActivity extends AppCompatActivity {
                                 bundle.putDouble("search_Latitude", 35.132807);
                                 bundle.putDouble("search_Longitude", 128.706819);
                                 searchTrafficMapFragment.setArguments(bundle);
-                                fragmentTransaction.replace(R.id.traffic_map, searchTrafficMapFragment);
+                                fragmentTransaction.replace(R.id.traffic_map, searchTrafficMapFragment).commitAllowingStateLoss();
 
                                 spinner3.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                                     @Override
@@ -2634,7 +2636,7 @@ public class SearchActivity extends AppCompatActivity {
                                 bundle.putDouble("search_Latitude", 35.534952);
                                 bundle.putDouble("search_Longitude", 128.500861);
                                 searchTrafficMapFragment.setArguments(bundle);
-                                fragmentTransaction.replace(R.id.traffic_map, searchTrafficMapFragment);
+                                fragmentTransaction.replace(R.id.traffic_map, searchTrafficMapFragment).commitAllowingStateLoss();
 
                                 spinner3.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                                     @Override
@@ -2681,14 +2683,14 @@ public class SearchActivity extends AppCompatActivity {
                                             bundle.putDouble("search_Latitude", 36.107004);
                                             bundle.putDouble("search_Longitude", 129.342592);
                                             searchTrafficMapFragment.setArguments(bundle);
-                                            fragmentTransaction.replace(R.id.traffic_map, searchTrafficMapFragment);
+                                            fragmentTransaction.replace(R.id.traffic_map, searchTrafficMapFragment).commitAllowingStateLoss();
                                         } else if (adspin3.getItem(position).equals("연일읍")) {
                                             find_weather("Enjitsu");
                                             temp_div.setVisibility(View.VISIBLE);
                                             bundle.putDouble("search_Latitude", 35.992192);
                                             bundle.putDouble("search_Longitude", 129.343832);
                                             searchTrafficMapFragment.setArguments(bundle);
-                                            fragmentTransaction.replace(R.id.traffic_map, searchTrafficMapFragment);
+                                            fragmentTransaction.replace(R.id.traffic_map, searchTrafficMapFragment).commitAllowingStateLoss();
                                         }
                                     }
 
@@ -2713,7 +2715,7 @@ public class SearchActivity extends AppCompatActivity {
                                             bundle.putDouble("search_Latitude", 35.988651);
                                             bundle.putDouble("search_Longitude", 128.398968);
                                             searchTrafficMapFragment.setArguments(bundle);
-                                            fragmentTransaction.replace(R.id.traffic_map, searchTrafficMapFragment);
+                                            fragmentTransaction.replace(R.id.traffic_map, searchTrafficMapFragment).commitAllowingStateLoss();
                                         }
                                     }
 
@@ -2738,7 +2740,7 @@ public class SearchActivity extends AppCompatActivity {
                                             bundle.putDouble("search_Latitude", 35.912583);
                                             bundle.putDouble("search_Longitude", 128.818827);
                                             searchTrafficMapFragment.setArguments(bundle);
-                                            fragmentTransaction.replace(R.id.traffic_map, searchTrafficMapFragment);
+                                            fragmentTransaction.replace(R.id.traffic_map, searchTrafficMapFragment).commitAllowingStateLoss();
                                         }
                                     }
 
@@ -2759,7 +2761,7 @@ public class SearchActivity extends AppCompatActivity {
                                 bundle.putDouble("search_Latitude", 36.413513);
                                 bundle.putDouble("search_Longitude", 128.159047);
                                 searchTrafficMapFragment.setArguments(bundle);
-                                fragmentTransaction.replace(R.id.traffic_map, searchTrafficMapFragment);
+                                fragmentTransaction.replace(R.id.traffic_map, searchTrafficMapFragment).commitAllowingStateLoss();
 
                                 spinner3.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                                     @Override
@@ -2784,7 +2786,7 @@ public class SearchActivity extends AppCompatActivity {
                                 bundle.putDouble("search_Latitude", 36.592048);
                                 bundle.putDouble("search_Longitude", 128.193884);
                                 searchTrafficMapFragment.setArguments(bundle);
-                                fragmentTransaction.replace(R.id.traffic_map, searchTrafficMapFragment);
+                                fragmentTransaction.replace(R.id.traffic_map, searchTrafficMapFragment).commitAllowingStateLoss();
 
                                 spinner3.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                                     @Override
@@ -2809,7 +2811,7 @@ public class SearchActivity extends AppCompatActivity {
                                 bundle.putDouble("search_Latitude", 35.839059);
                                 bundle.putDouble("search_Longitude", 129.201941);
                                 searchTrafficMapFragment.setArguments(bundle);
-                                fragmentTransaction.replace(R.id.traffic_map, searchTrafficMapFragment);
+                                fragmentTransaction.replace(R.id.traffic_map, searchTrafficMapFragment).commitAllowingStateLoss();
 
                                 spinner3.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                                     @Override
@@ -2834,7 +2836,7 @@ public class SearchActivity extends AppCompatActivity {
                                 bundle.putDouble("search_Latitude", 36.239654);
                                 bundle.putDouble("search_Longitude", 128.570714);
                                 searchTrafficMapFragment.setArguments(bundle);
-                                fragmentTransaction.replace(R.id.traffic_map, searchTrafficMapFragment);
+                                fragmentTransaction.replace(R.id.traffic_map, searchTrafficMapFragment).commitAllowingStateLoss();
 
                                 spinner3.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                                     @Override
@@ -2859,7 +2861,7 @@ public class SearchActivity extends AppCompatActivity {
                                 bundle.putDouble("search_Latitude", 36.115211);
                                 bundle.putDouble("search_Longitude", 128.343100);
                                 searchTrafficMapFragment.setArguments(bundle);
-                                fragmentTransaction.replace(R.id.traffic_map, searchTrafficMapFragment);
+                                fragmentTransaction.replace(R.id.traffic_map, searchTrafficMapFragment).commitAllowingStateLoss();
 
                                 spinner3.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                                     @Override
@@ -2884,7 +2886,7 @@ public class SearchActivity extends AppCompatActivity {
                                 bundle.putDouble("search_Latitude", 36.126649);
                                 bundle.putDouble("search_Longitude", 128.099609);
                                 searchTrafficMapFragment.setArguments(bundle);
-                                fragmentTransaction.replace(R.id.traffic_map, searchTrafficMapFragment);
+                                fragmentTransaction.replace(R.id.traffic_map, searchTrafficMapFragment).commitAllowingStateLoss();
 
                                 spinner3.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                                     @Override
@@ -2909,7 +2911,7 @@ public class SearchActivity extends AppCompatActivity {
                                 bundle.putDouble("search_Latitude", 36.352967);
                                 bundle.putDouble("search_Longitude", 129.059221);
                                 searchTrafficMapFragment.setArguments(bundle);
-                                fragmentTransaction.replace(R.id.traffic_map, searchTrafficMapFragment);
+                                fragmentTransaction.replace(R.id.traffic_map, searchTrafficMapFragment).commitAllowingStateLoss();
 
                                 spinner3.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                                     @Override
@@ -2934,7 +2936,7 @@ public class SearchActivity extends AppCompatActivity {
                                 bundle.putDouble("search_Latitude", 36.564766);
                                 bundle.putDouble("search_Longitude", 128.720191);
                                 searchTrafficMapFragment.setArguments(bundle);
-                                fragmentTransaction.replace(R.id.traffic_map, searchTrafficMapFragment);
+                                fragmentTransaction.replace(R.id.traffic_map, searchTrafficMapFragment).commitAllowingStateLoss();
 
                                 spinner3.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                                     @Override
@@ -2971,6 +2973,7 @@ public class SearchActivity extends AppCompatActivity {
         switch (item.getItemId()) {
             case android.R.id.home: {
                 //뒤로가기 버튼 클릭시
+                searchTrafficMapFragment.onDestroy();
                 finish();
                 return true;
             }
@@ -2980,7 +2983,7 @@ public class SearchActivity extends AppCompatActivity {
 
     //위도와 경도에 맞는 날씨 찾기
     public void find_weather(String cityname) {
-        String current_url = "https://api.openweathermap.org/data/2.5/weather?q="+cityname+",kr&appid=e6b1f229824c3f4eac0cf8000177ecc2";
+        String current_url = "https://api.openweathermap.org/data/2.5/weather?q=" + cityname + ",kr&appid=e6b1f229824c3f4eac0cf8000177ecc2";
 
         JsonObjectRequest jor_current = new JsonObjectRequest(Request.Method.GET, current_url, null, new Response.Listener<JSONObject>() {
             @Override
@@ -3010,9 +3013,9 @@ public class SearchActivity extends AppCompatActivity {
                     double centi1 = (temp_int - 273.15);
                     double centi2 = (maxtemp_int - 273.15);
                     double centi3 = (mintemp_int - 273.15);
-                    int i1 = (int)centi1;
-                    int i2 = (int)centi2;
-                    int i3 = (int)centi3;
+                    int i1 = (int) centi1;
+                    int i2 = (int) centi2;
+                    int i3 = (int) centi3;
 
                     now_temp.setText(String.valueOf(i1));
                     max_temp.setText(String.valueOf(i2));
@@ -3037,60 +3040,61 @@ public class SearchActivity extends AppCompatActivity {
     //날씨에 맞는 아이콘 출력
     public void ViewweatherIcon(String iconcode) {
         switch (iconcode) {
-            case "01d" : //clear sky day
+            case "01d": //clear sky day
                 WeatherIconImg.setImageResource(R.drawable.weather_sun);
                 break;
-            case "02d" : //few clouds day
+            case "02d": //few clouds day
                 WeatherIconImg.setImageResource(R.drawable.weather_few_clouds_sun);
                 break;
-            case "03d" : //scattered clouds day
+            case "03d": //scattered clouds day
                 WeatherIconImg.setImageResource(R.drawable.weather_clouds);
                 break;
-            case "04d" : //broken clouds day
+            case "04d": //broken clouds day
                 WeatherIconImg.setImageResource(R.drawable.weather_broken_clouds);
                 break;
-            case "09d" : //shower rain day
+            case "09d": //shower rain day
                 WeatherIconImg.setImageResource(R.drawable.weather_shower_rain);
                 break;
-            case "10d" : //rain day
+            case "10d": //rain day
                 WeatherIconImg.setImageResource(R.drawable.weather_rain_day);
                 break;
-            case "11d" : //thunderstorm day
+            case "11d": //thunderstorm day
                 WeatherIconImg.setImageResource(R.drawable.weather_thuderstorm);
                 break;
-            case "13d" : //snow day
+            case "13d": //snow day
                 WeatherIconImg.setImageResource(R.drawable.weather_snow);
                 break;
-            case "50d" : //mist day
+            case "50d": //mist day
                 WeatherIconImg.setImageResource(R.drawable.weather_mist);
                 break;
-            case "01n" : //clear sky night
+            case "01n": //clear sky night
                 WeatherIconImg.setImageResource(R.drawable.weather_night);
                 break;
-            case "02n" : //few clouds night
+            case "02n": //few clouds night
                 WeatherIconImg.setImageResource(R.drawable.weather_few_clouds_nignt);
                 break;
-            case "03n" : //scattered clouds night
+            case "03n": //scattered clouds night
                 WeatherIconImg.setImageResource(R.drawable.weather_clouds);
                 break;
-            case "04n" : //broken clouds night
+            case "04n": //broken clouds night
                 WeatherIconImg.setImageResource(R.drawable.weather_broken_clouds);
                 break;
-            case "09n" : //shower rain night
+            case "09n": //shower rain night
                 WeatherIconImg.setImageResource(R.drawable.weather_shower_rain);
                 break;
-            case "10n" : //rain night
+            case "10n": //rain night
                 WeatherIconImg.setImageResource(R.drawable.weather_rain_night);
                 break;
-            case "11n" : //thunderstorm night
+            case "11n": //thunderstorm night
                 WeatherIconImg.setImageResource(R.drawable.weather_thuderstorm);
                 break;
-            case "13n" : //snow night
+            case "13n": //snow night
                 WeatherIconImg.setImageResource(R.drawable.weather_snow);
                 break;
-            case "50n" : //mist night
+            case "50n": //mist night
                 WeatherIconImg.setImageResource(R.drawable.weather_mist);
                 break;
         }
     }
+
 }

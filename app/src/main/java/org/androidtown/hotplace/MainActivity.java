@@ -559,7 +559,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             trafficmapFragment.setArguments(bundle);
             fragmentTransaction.replace(R.id.traffic_map, trafficmapFragment);
             fragmentTransaction.commit();
-
         }
 
         @Override
