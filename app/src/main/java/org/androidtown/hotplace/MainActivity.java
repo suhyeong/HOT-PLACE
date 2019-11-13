@@ -75,7 +75,7 @@ import java.util.Locale;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
-public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener, OnMapReadyCallback, GoogleMap.OnMarkerClickListener, GoogleMap.OnInfoWindowClickListener {
+public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener, OnMapReadyCallback, GoogleMap.OnMarkerClickListener, GoogleMap.OnInfoWindowClickListener, GoogleMap.OnMyLocationChangeListener {
 
     private BackPressCloseHandler backPressCloseHandler;
     private DrawerLayout drawer;
@@ -113,7 +113,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     StorageReference storageReference = storage.getReference();
     StorageReference pathReference;
 
-    String username_for_marker;
+    private String username_for_marker;
     String friend_maker_title;
 
     private String memo_date_for_save;
@@ -127,6 +127,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     Date mDate;
     SimpleDateFormat nFormat = new SimpleDateFormat("yyyyMMdd");
 
+    Marker myMarker;
+
     @SuppressLint("RestrictedApi")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -139,14 +141,14 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         navigationView.setNavigationItemSelectedListener(this);
 
         backPressCloseHandler = new BackPressCloseHandler(this);
-        locationManager = (LocationManager)getSystemService(LOCATION_SERVICE);
+        locationManager = (LocationManager) getSystemService(LOCATION_SERVICE);
 
         //액션바
         getSupportActionBar().setDisplayShowTitleEnabled(false); //액션바 어플리케이션 이름 삭제
         //getSupportActionBar().setDisplayHomeAsUpEnabled(true); //뒤로가기 버튼
 
         //GPS가 켜져있는지 확인
-        if(!locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER)) {
+        if (!locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER)) {
             //GPS 설정화면으로 이동
             Intent intent = new Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS);
             intent.addCategory(Intent.CATEGORY_DEFAULT);
@@ -155,11 +157,11 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         }
 
         //마시멜로 이상일 경우
-        if(Build.VERSION.SDK_INT >= 23) {
+        if (Build.VERSION.SDK_INT >= 23) {
             //권한 없는 경우
-            if(ContextCompat.checkSelfPermission(MainActivity.this,Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED ||
-                    ContextCompat.checkSelfPermission(MainActivity.this,Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-                ActivityCompat.requestPermissions(MainActivity.this, new String[]{Manifest.permission.ACCESS_COARSE_LOCATION, Manifest.permission.ACCESS_FINE_LOCATION} , 1);
+            if (ContextCompat.checkSelfPermission(MainActivity.this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED ||
+                    ContextCompat.checkSelfPermission(MainActivity.this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+                ActivityCompat.requestPermissions(MainActivity.this, new String[]{Manifest.permission.ACCESS_COARSE_LOCATION, Manifest.permission.ACCESS_FINE_LOCATION}, 1);
             }
             //권한이 있는 경우
             else {
@@ -196,12 +198,12 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 name_str = user_.userName;
                 profile_state = user_.userProfile;
 
-                username.setText(name_str+"님");
+                username.setText(name_str + "님");
 
-                if(profile_state == 0)
+                if (profile_state == 0)
                     userprofile.setImageResource(R.drawable.user_defaultprofile);
                 else {
-                    pathReference = storageReference.child(user.getUid()+"/ProfileImage/ProfilePhoto");
+                    pathReference = storageReference.child(user.getUid() + "/ProfileImage/ProfilePhoto");
                     pathReference.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
                         @Override
                         public void onSuccess(Uri uri) {
@@ -240,7 +242,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     }
 
     //액션바 메뉴
-    @Override public boolean onCreateOptionsMenu(Menu menu) {
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.actionbar_main, menu);
         return true;
     }
@@ -293,7 +296,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                             public void onClick(DialogInterface dialogInterface, int i) {
                                 //로그아웃 "네" 클릭시
                                 userAuth.signOut();
-                                Toast.makeText(MainActivity.this ,"로그아웃되었습니다.",Toast.LENGTH_SHORT).show();
+                                Toast.makeText(MainActivity.this, "로그아웃되었습니다.", Toast.LENGTH_SHORT).show();
                                 Intent intent = new Intent(MainActivity.this, WelcomeActivity.class);
                                 intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
                                 startActivity(intent);
@@ -318,7 +321,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     //두번 눌렀을 때 종료
     @Override
     public void onBackPressed() {
-        if(drawer.isDrawerOpen(GravityCompat.START)) {
+        if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
         } else {
             //super.onBackPressed();
@@ -366,24 +369,36 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         googleMap.getUiSettings().setZoomControlsEnabled(true);
 
         // 나의 위치 설정
-        final LatLng position = new LatLng(mLatitude, mLongitude);
+        LatLng position = new LatLng(mLatitude, mLongitude);
 
         //화면 중앙의 위치와 카메라 줌비율
         mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(position, 15));
         mMap.setOnMarkerClickListener(this);
         mMap.setOnInfoWindowClickListener(this);
+        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+            // TODO: Consider calling
+            //    ActivityCompat#requestPermissions
+            // here to request the missing permissions, and then overriding
+            //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
+            //                                          int[] grantResults)
+            // to handle the case where the user grants the permission. See the documentation
+            // for ActivityCompat#requestPermissions for more details.
+            return;
+        }
+        mMap.setMyLocationEnabled(true);
+        mMap.setOnMyLocationChangeListener(this);
 
         database.getInstance().getReference("user_info").child(user.getUid()).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 User get = dataSnapshot.getValue(User.class);
                 username_for_marker = get.userName + "님";
-                Marker marker = mMap.addMarker(new MarkerOptions()
-                        .position(position)
+                myMarker = mMap.addMarker(new MarkerOptions()
+                        .position(new LatLng(mLatitude, mLongitude))
                         .title(username_for_marker)
                         .snippet("메모를 추가하시려면 클릭하세요 !")
                         .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_ORANGE)));
-                marker.showInfoWindow();
+                myMarker.showInfoWindow();
             }
 
             @Override
@@ -537,7 +552,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 return;
             }
             //나의 위치를 한번만 가져오기 위해
-            locationManager.removeUpdates(locationListener);
+            //locationManager.removeUpdates(locationListener);
 
             //위도 경도
             mLatitude = location.getLatitude();
@@ -722,5 +737,13 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 WeatherIconImg.setImageResource(R.drawable.weather_mist);
                 break;
         }
+    }
+
+    @Override
+    public void onMyLocationChange(Location location) {
+        double d1 = location.getLatitude();
+        double d2 = location.getLongitude();
+        Log.e("OnMyLocationChange", d1+","+d2);
+        mMap.moveCamera(CameraUpdateFactory.newLatLng(new LatLng(d1, d2)));
     }
 }
